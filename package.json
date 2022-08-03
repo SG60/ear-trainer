@@ -14,8 +14,9 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.22.2",
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-vercel": "1.0.0-next.66",
+		"@sveltejs/kit": "1.0.0-next.403",
+		"@sg60/sam-svelte-components": "2.1.3",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"eslint": "^8.16.0",
