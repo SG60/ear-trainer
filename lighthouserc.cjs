@@ -12,7 +12,7 @@ module.exports = {
 			preset: 'lighthouse:no-pwa',
 			assertions: {
 				'csp-xss': 'off',
-				'uses-text-compression': 'off',
+				'uses-text-compression': 'off'
 				// 'unused-css-rules': 'off'
 				// 'unused-javascript': 'off'
 				// 'uses-passive-event-listeners': 'off'
