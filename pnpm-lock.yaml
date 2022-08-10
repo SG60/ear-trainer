@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@playwright/test': 1.24.2
-  '@sg60/sam-svelte-components': 2.1.3
+  '@sg60/sam-svelte-components': 2.1.4
   '@sveltejs/adapter-vercel': 1.0.0-next.66
   '@sveltejs/kit': 1.0.0-next.405
   '@typescript-eslint/eslint-plugin': 5.33.0
@@ -25,7 +25,7 @@ specifiers:
 
 devDependencies:
   '@playwright/test': 1.24.2
-  '@sg60/sam-svelte-components': 2.1.3
+  '@sg60/sam-svelte-components': 2.1.4_svelte@3.49.0
   '@sveltejs/adapter-vercel': 1.0.0-next.66
   '@sveltejs/kit': 1.0.0-next.405_svelte@3.49.0+vite@3.0.4
   '@typescript-eslint/eslint-plugin': 5.33.0_njno5y7ry2l2lcmiu4tywxkwnq
@@ -165,8 +165,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sg60/sam-svelte-components/2.1.3:
-    resolution: {integrity: sha512-eaMJlwpZPKwOXnN8aeckHIQrqU5uKj3vKfGeHB0jkzbcWqdXInKIBF+vFOAr41j3crl3HvSrViZ0yZyxLtBWsA==, tarball: download/@sg60/sam-svelte-components/2.1.3/ccd47bc178dd11cfa48db57d8330a6766f28dddac2a522ec17f1a27bb4ceaf7c}
+  /@sg60/sam-svelte-components/2.1.4_svelte@3.49.0:
+    resolution: {integrity: sha512-VrtNZ3RGgr1pY0Upan+Wa0NP1RilGzvamTyP+EGM/ZfzMFE8erW69sAT7ZGrvbLEe+jQ9LJzbgsGUWLwLM+0Dg==, tarball: download/@SG60/sam-svelte-components/2.1.4/7908c897755ddb1b73f82c51613115f606e3f16b}
+    peerDependencies:
+      svelte: ^3.44.0
+    dependencies:
+      svelte: 3.49.0
     dev: true
 
   /@sveltejs/adapter-vercel/1.0.0-next.66:
