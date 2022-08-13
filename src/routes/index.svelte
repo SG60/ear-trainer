@@ -12,10 +12,17 @@
 		synth = new Tone.Synth().toDestination();
 	});
 
-	function playNotes() {
-		// play a middle 'C' for the duration of an 8th note.
-		synth.triggerAttackRelease('C4', '8n');
-		synth.triggerAttackRelease('E4', '8n', '+8n');
+	/**
+	 * @param {Tone.Unit.Frequency} startNote
+	 * @param {number} interval
+	 */
+	function playInterval(startNote, interval) {
+		synth.triggerAttackRelease(startNote, '8n');
+		synth.triggerAttackRelease(
+			Tone.Frequency(startNote).transpose(interval).toFrequency(),
+			'8n',
+			'+8n'
+		);
 	}
 </script>
 
@@ -24,7 +31,15 @@
 	<meta name="description" content="Ear Training Application" />
 </svelte:head>
 
-<h1 class="text-lg">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1 class="text-5xl text-center my-20">Ear Trainer</h1>
 
-<button on:click={playNotes}>Play note</button>
+<div class="flex flex-wrap justify-center">
+	{#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as interval}
+		<button
+			class="m-1 border-2 bg-lime-100/50 p-2 hover:border-current"
+			on:click={() => playInterval('C4', interval)}
+		>
+			Play C4 and an interval of {interval}
+		</button>
+	{/each}
+</div>
