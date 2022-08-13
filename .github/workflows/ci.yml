@@ -29,7 +29,7 @@ jobs:
       - if: ${{github.base_ref}}
         run: git fetch --depth=1 origin +refs/heads/${{github.base_ref}}:refs/remotes/origin/${{github.base_ref}}
 
-      - uses: ./.github/actions/pnpm-node-setup.yml
+      - uses: ./.github/actions/pnpm-node-setup
 
       - name: pnpm build
         run: |
@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/pnpm-node-setup.yml
+      - uses: ./.github/actions/pnpm-node-setup
 
       - name: build
         run: |
@@ -60,7 +60,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/pnpm-node-setup.yml
+      - uses: ./.github/actions/pnpm-node-setup
 
       - run: |
           npx playwright install
