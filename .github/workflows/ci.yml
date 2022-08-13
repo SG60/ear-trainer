@@ -11,10 +11,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Authentication for GitHub npm registry
-env:
-  NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -33,19 +29,10 @@ jobs:
       - if: ${{github.base_ref}}
         run: git fetch --depth=1 origin +refs/heads/${{github.base_ref}}:refs/remotes/origin/${{github.base_ref}}
 
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.0.0-rc.6
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          cache: 'pnpm'
-          cache-dependency-path: ./pnpm-lock.yaml
-          registry-url: 'https://npm.pkg.github.com'
+      - uses: ./.github/actions/pnpm-node-setup.yml
 
-      - name: pnpm install, build
+      - name: pnpm build
         run: |
-          pnpm install
           pnpm run build
 
       - name: run Lighthouse CI
@@ -60,19 +47,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.0.0-rc.6
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          cache: 'pnpm'
-          cache-dependency-path: ./pnpm-lock.yaml
-          registry-url: 'https://npm.pkg.github.com'
+      - uses: ./.github/actions/pnpm-node-setup.yml
 
-      - name: pnpm install, build
+      - name: build
         run: |
-          pnpm install
           pnpm run build
       - run: pnpm run check
       - run: pnpm run lint
@@ -82,21 +60,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: echo $NODE_AUTH_TOKEN
+      - uses: ./.github/actions/pnpm-node-setup.yml
 
-      - uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.0.0-rc.6
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          cache: 'pnpm'
-          cache-dependency-path: ./pnpm-lock.yaml
-          registry-url: 'https://npm.pkg.github.com'
-
-      - name: pnpm install, build
-        run: |
-          pnpm install
+      - run: |
           npx playwright install
 
       - name: test
