@@ -1,7 +1,7 @@
 name: 'Set up PNPM and Node'
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Install Node.js
       uses: actions/setup-node@v3
@@ -28,7 +28,7 @@ runs:
         path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-pnpm-store- 
+          ${{ runner.os }}-pnpm-store-
 
-    - run: "pnpm install"
+    - run: 'pnpm install'
       shell: bash
