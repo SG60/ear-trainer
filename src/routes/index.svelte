@@ -31,7 +31,7 @@
 	<meta name="description" content="Ear Training Application" />
 </svelte:head>
 
-<h1 class="text-5xl text-center my-20">Ear Trainer</h1>
+<h1 class="my-20 text-center text-5xl">Ear Trainer</h1>
 
 <div class="flex flex-wrap justify-center">
 	{#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as interval}
