@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as Tone from 'tone';
-	import { getRandomInt } from './+page';
+	import { getRandomInt } from '$lib/mathUtils';
 
 	let synth: Tone.Synth<Tone.SynthOptions>;
 
