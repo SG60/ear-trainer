@@ -16,7 +16,7 @@
 		"@playwright/test": "1.25.0",
 		"@sg60/sam-svelte-components": "2.1.4",
 		"@sveltejs/adapter-vercel": "1.0.0-next.66",
-		"@sveltejs/kit": "1.0.0-next.414",
+		"@sveltejs/kit": "1.0.0-next.415",
 		"@typescript-eslint/eslint-plugin": "5.33.1",
 		"@typescript-eslint/parser": "5.33.1",
 		"autoprefixer": "10.4.8",
