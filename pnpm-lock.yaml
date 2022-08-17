@@ -4,7 +4,7 @@ specifiers:
   '@playwright/test': 1.25.0
   '@sg60/sam-svelte-components': 2.1.4
   '@sveltejs/adapter-vercel': 1.0.0-next.66
-  '@sveltejs/kit': 1.0.0-next.414
+  '@sveltejs/kit': 1.0.0-next.415
   '@typescript-eslint/eslint-plugin': 5.33.1
   '@typescript-eslint/parser': 5.33.1
   autoprefixer: 10.4.8
@@ -28,7 +28,7 @@ devDependencies:
   '@playwright/test': 1.25.0
   '@sg60/sam-svelte-components': 2.1.4_svelte@3.49.0
   '@sveltejs/adapter-vercel': 1.0.0-next.66
-  '@sveltejs/kit': 1.0.0-next.414_svelte@3.49.0+vite@3.0.8
+  '@sveltejs/kit': 1.0.0-next.415_svelte@3.49.0+vite@3.0.8
   '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
   '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
   autoprefixer: 10.4.8_postcss@8.4.16
@@ -196,8 +196,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.414_svelte@3.49.0+vite@3.0.8:
-    resolution: {integrity: sha512-2sA1VthyKVhHZHrZytlCgoTzaJfTJjhss3tOCJ5Gs4jm9GZUxftLhrGcwcOw9ARAOKts/wu9D2nvlcyZNkjzoA==}
+  /@sveltejs/kit/1.0.0-next.415_svelte@3.49.0+vite@3.0.8:
+    resolution: {integrity: sha512-XtiiEW/LuhYeT0YdyLxNA+lCcu+1NMhLd4xM8ZYJ//x408eM9Oeckfh8qmzcBurksaZEZHd1cwHscSkOnJLOww==}
     engines: {node: '>=16.9'}
     hasBin: true
     requiresBuild: true
