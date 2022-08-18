@@ -1,9 +1,5 @@
 import * as Tone from 'tone';
-import type { Synth } from 'tone';
-// import { synth } from '$lib/synth';
-
-let synth: Synth;
-await import('$lib/synth').then((mod) => ({ synth } = mod));
+import { synth } from '$lib/synth';
 
 export function playInterval(startNote: Tone.Unit.Frequency, interval: number) {
 	console.log(`start: ${startNote} interval: ${interval}`);
