@@ -12,3 +12,5 @@ https://github.com/users/SG60/projects/6
 - A database for users and results... which one?!? (Maybe supabase. Could also do authentication)
 
 Have a donation link after 30 minutes?
+
+https://excalidraw.com/#json=4RsdYN32AeyUWoR9qNrkS,toeQ5ePCec5qfxfuxLamvg
