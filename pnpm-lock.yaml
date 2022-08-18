@@ -6,7 +6,7 @@ specifiers:
   '@sentry/tracing': 7.11.1
   '@sg60/sam-svelte-components': 2.1.4
   '@sveltejs/adapter-vercel': 1.0.0-next.66
-  '@sveltejs/kit': 1.0.0-next.422
+  '@sveltejs/kit': 1.0.0-next.423
   '@typescript-eslint/eslint-plugin': 5.33.1
   '@typescript-eslint/parser': 5.33.1
   autoprefixer: 10.4.8
@@ -32,7 +32,7 @@ devDependencies:
   '@sentry/tracing': 7.11.1
   '@sg60/sam-svelte-components': 2.1.4_svelte@3.49.0
   '@sveltejs/adapter-vercel': 1.0.0-next.66
-  '@sveltejs/kit': 1.0.0-next.422_svelte@3.49.0+vite@3.0.8
+  '@sveltejs/kit': 1.0.0-next.423_svelte@3.49.0+vite@3.0.8
   '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
   '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
   autoprefixer: 10.4.8_postcss@8.4.16
@@ -265,8 +265,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.422_svelte@3.49.0+vite@3.0.8:
-    resolution: {integrity: sha512-P8zu4tqwpWj2SdulV+eQhHxJ1EUJREl0xOL55oGGNOSeGfK05hUBMrCxH9xDle0q04Wzh9I+muqtasUEM0NSEA==}
+  /@sveltejs/kit/1.0.0-next.423_svelte@3.49.0+vite@3.0.8:
+    resolution: {integrity: sha512-AL2jLelCXRUpaL5AMccaMJfUIgbOooRG/arxYudqj8DT9bBsyPFzxEl7yLKE91bD+FCFLICKTZOsvjKiHxTjhg==}
     engines: {node: '>=16.9'}
     hasBin: true
     requiresBuild: true
