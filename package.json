@@ -18,7 +18,7 @@
 		"@sentry/tracing": "7.11.1",
 		"@sg60/sam-svelte-components": "2.1.4",
 		"@sveltejs/adapter-vercel": "1.0.0-next.66",
-		"@sveltejs/kit": "1.0.0-next.420",
+		"@sveltejs/kit": "1.0.0-next.422",
 		"@typescript-eslint/eslint-plugin": "5.33.1",
 		"@typescript-eslint/parser": "5.33.1",
 		"autoprefixer": "10.4.8",
