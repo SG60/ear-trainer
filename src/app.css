@@ -1,4 +1,7 @@
-/* Write your global styles here, in PostCSS syntax */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import './styles/base.css';
+
+@import 'tailwindcss/components';
+@import './styles/buttons.css';
+
+@import 'tailwindcss/utilities';

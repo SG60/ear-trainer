@@ -1,5 +1,5 @@
 <script>
-	const links = ['kitchen-sink-demos', 'interval-test'];
+	const links = ['kitchen-sink-demos', 'interval-test', 'account'];
 </script>
 
 <svelte:head>
