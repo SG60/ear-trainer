@@ -2,8 +2,8 @@ lockfileVersion: 5.4
 
 specifiers:
   '@playwright/test': 1.25.0
-  '@sentry/svelte': ^7.11.1
-  '@sentry/tracing': ^7.11.1
+  '@sentry/svelte': 7.11.1
+  '@sentry/tracing': 7.11.1
   '@sg60/sam-svelte-components': 2.1.4
   '@sveltejs/adapter-vercel': 1.0.0-next.66
   '@sveltejs/kit': 1.0.0-next.420
