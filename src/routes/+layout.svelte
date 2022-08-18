@@ -17,4 +17,6 @@
 	import '../app.css';
 </script>
 
+<a href="/"><h1 class="my-20 text-center text-5xl hover:underline">Ear Trainer</h1></a>
+
 <slot />
