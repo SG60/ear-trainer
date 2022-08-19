@@ -8,6 +8,6 @@
 </svelte:head>
 
 <section class="grid place-content-center gap-1 divide-y">
-	<h1 class="font-light text-2xl">Recent Results!</h1>
+	<h1 class="text-2xl font-light">Recent Results!</h1>
 	<RealtimeAnswersFeed />
 </section>

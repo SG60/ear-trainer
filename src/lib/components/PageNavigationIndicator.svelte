@@ -12,8 +12,7 @@
 		--colour: theme('colors.lime.500' / 50%);
 	}
 	.loader div {
-		animation: horizontalProgressBar var(--animation-length) linear
-			infinite;
+		animation: horizontalProgressBar var(--animation-length) linear infinite;
 
 		background-color: var(--colour);
 		height: 5px;
@@ -31,8 +30,7 @@
 		height: 5px;
 		width: 50vw;
 		position: fixed;
-		animation: horizontalProgressBar2 var(--animation-length) linear
-			infinite;
+		animation: horizontalProgressBar2 var(--animation-length) linear infinite;
 		left: 0px;
 		transform: translateX(-50vw);
 	}

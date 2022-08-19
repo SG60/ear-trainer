@@ -22,7 +22,7 @@
 	import { supabase } from '$lib/supabaseClient';
 	import type { User } from '@supabase/supabase-js';
 	import type { LayoutData } from './$types';
-import { browser } from '$app/env';
+	import { browser } from '$app/env';
 
 	/** @type{import('./$types').LayoutData} */
 	export let data: LayoutData;

@@ -12,7 +12,7 @@
 	}
 </script>
 
-<button class="my-2 text-sm w-96" on:click={() => (supabaseData = getSupaData())}>Refresh</button>
+<button class="my-2 w-96 text-sm" on:click={() => (supabaseData = getSupaData())}>Refresh</button>
 {#await supabaseData}
 	<div class="w-full grid justify-center">
 		<LoadingRing />

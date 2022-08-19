@@ -4,7 +4,7 @@ export function getChildPageHrefs(): string[] {
 
 	// Format for hrefs
 	const pages = Object.keys(modules)
-		.filter((el) => (el !== './+page.svelte' || el.includes('+page.svelte')))
+		.filter((el) => el !== './+page.svelte' || el.includes('+page.svelte'))
 		.map((key) => key.replace('./', '').replace('/+page.svelte', ''));
 
 	return pages;
