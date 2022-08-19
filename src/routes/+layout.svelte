@@ -1,4 +1,6 @@
 <script context="module">
+	import { navigating } from '$app/stores';
+
 	import * as Sentry from '@sentry/svelte';
 	import { BrowserTracing } from '@sentry/tracing';
 
@@ -14,6 +16,7 @@
 </script>
 
 <script>
+	import PageNavigationIndicator from '$components/PageNavigationIndicator.svelte';
 	import '../app.css';
 
 	/** @type{import('./$types').LayoutData} */
@@ -37,3 +40,7 @@
 </header>
 
 <slot />
+
+{#if $navigating}
+	<PageNavigationIndicator/>
+{/if}
