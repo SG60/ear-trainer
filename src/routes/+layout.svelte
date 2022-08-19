@@ -15,8 +15,25 @@
 
 <script>
 	import '../app.css';
+
+	/** @type{import('./$types').LayoutData} */
+	export let data;
 </script>
 
-<a href="/"><h1 class="my-20 text-center text-5xl hover:underline">Ear Trainer</h1></a>
+<header class="my-20">
+	<a href="/"><h1 class="text-center text-5xl hover:underline">Ear Trainer</h1></a>
+
+	<nav class="mt-8 flex flex-wrap justify-center">
+		{#each data.pages as page}
+			<a
+				href={page}
+				class="m-1 bg-lime-100/50 p-2 hover:bg-lime-300 hover:underline"
+				sveltekit:prefetch
+			>
+				{page}
+			</a>
+		{/each}
+	</nav>
+</header>
 
 <slot />
