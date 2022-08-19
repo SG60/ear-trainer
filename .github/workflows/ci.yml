@@ -14,6 +14,7 @@ on:
 # Authentication for GitHub npm registry
 env:
   NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
+  PUBLIC_SENTRY_ENVIRONMENT: 'github_ci'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
