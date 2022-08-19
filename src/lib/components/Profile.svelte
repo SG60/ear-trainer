@@ -6,7 +6,7 @@
 	let loading = true;
 	let username: any;
 
-	function getProfile() {
+	function getProfile(_node: any) {
 		try {
 			loading = true;
 			const user = supabase.auth.user();
