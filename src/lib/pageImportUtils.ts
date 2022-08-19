@@ -4,7 +4,7 @@ export function getChildPageHrefs(): string[] {
 
 	// Format for hrefs
 	const pages = Object.keys(modules)
-		.filter((el) => !(el === './+page.svelte' || el.includes('+layout')))
+		.filter((el) => (el !== './+page.svelte' || el.includes('+page.svelte')))
 		.map((key) => key.replace('./', '').replace('/+page.svelte', ''));
 
 	return pages;
@@ -13,7 +13,7 @@ export function getChildPageHrefs(): string[] {
 export function getAllPageHrefs(): string[] {
 	const modules = import.meta.glob('/src/routes/**/*.svelte');
 	const pages = Object.keys(modules)
-		.filter((el) => !el.includes('+layout'))
+		.filter((el) => el.includes('+page.svelte'))
 		.map((key) => key.replace('/src/routes', '').replace('+page.svelte', ''));
 	return pages;
 }

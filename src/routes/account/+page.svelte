@@ -21,7 +21,6 @@
 		else loading = false;
 
 		({ data: answers } = await supabase.from('answers').select('*')) as { data: any[] };
-		console.log(answers);
 	});
 </script>
 

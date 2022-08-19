@@ -8,17 +8,9 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
-	user.set(supabase.auth.user() as User);
-
 	let loading = true;
 
-	supabase.auth.onAuthStateChange((_, session) => {
-		user.set(session?.user as User);
-	});
-
 	onMount(() => {
-		console.log($page.data);
-
 		if ($user) goto('/account');
 		else loading = false;
 	});

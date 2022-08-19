@@ -15,14 +15,27 @@
 	});
 </script>
 
-<script>
+<script lang="ts">
 	import PageNavigationIndicator from '$components/PageNavigationIndicator.svelte';
 	import '../app.css';
+	import { user } from '$lib/sessionStore';
+	import { supabase } from '$lib/supabaseClient';
+	import type { User } from '@supabase/supabase-js';
+	import type { LayoutData } from './$types';
+import { browser } from '$app/env';
 
 	/** @type{import('./$types').LayoutData} */
-	export let data;
+	export let data: LayoutData;
+
+	user.set(supabase.auth.user() as User);
+	supabase.auth.onAuthStateChange((_, session) => {
+		user.set(session?.user as User);
+	});
 </script>
 
+{#if $navigating}
+	<PageNavigationIndicator />
+{/if}
 <header class="my-20">
 	<a href="/"><h1 class="text-center text-5xl hover:underline">Ear Trainer</h1></a>
 
@@ -41,6 +54,15 @@
 
 <slot />
 
-{#if $navigating}
-	<PageNavigationIndicator/>
-{/if}
+<div class="grow" />
+<footer class="mt-20 bg-slate-50 py-8">
+	<p class="text-center">
+		{#if !browser}
+			loading login info...
+		{:else if $user}
+			<a href="/account">Logged in as {$user.email}</a>
+		{:else}
+			<a href="/account/login">Log in</a>
+		{/if}
+	</p>
+</footer>
