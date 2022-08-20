@@ -25,7 +25,7 @@
 		<ul class="divide-y">
 			{#each supaData as item}
 				{@const correct = item.n_correct === item.n_questions}
-				<li class={'p-2' + (correct ? ' bg-green-600 text-green-50 font-bold' : '')}>
+				<li class={'p-2' + (correct ? ' bg-green-700 text-green-50 font-bold' : '')}>
 					<div>
 						{item.n_correct}/{item.n_questions}, by {item.username}
 					</div>
