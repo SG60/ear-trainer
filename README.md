@@ -13,6 +13,11 @@ https://vercel.com/samgreening/ear-trainer
 - Vercel (with edge functions)
 - [Postgresql on Supabase](https://app.supabase.com/project/weajrtbsntmezicrvolh)[^1]
 
+## Monitoring
+
+- [Logtail](https://logtail.com/team/58943/tail?s=165740)
+- [Sentry](https://sentry.io/organizations/sam-greening/projects/ear-trainer/)
+
 [^1]: https://www.postgresql.org/docs/current/
 
 # other ideas
