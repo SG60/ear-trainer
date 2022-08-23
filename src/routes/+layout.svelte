@@ -37,10 +37,10 @@
 {#if $navigating}
 	<PageNavigationIndicator />
 {/if}
-<header class="my-20">
+<header class="mb-20 pt-20 shadow">
 	<a href="/"><h1 class="text-center text-5xl hover:underline">Ear Trainer</h1></a>
 
-	<nav class="mt-8 flex flex-wrap justify-center">
+	<nav class="my-8 flex flex-wrap justify-center">
 		{#each data.pages as page}
 			<a
 				href={page}
