@@ -1,10 +1,7 @@
 <script lang="ts">
 	import { user } from '$lib/sessionStore';
-	import { supabase } from '$lib/supabaseClient';
 	import Auth from '$components/Auth.svelte';
-	import type { User } from '@supabase/supabase-js';
 	import LoadingRing from '$components/LoadingRing.svelte';
-	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 
