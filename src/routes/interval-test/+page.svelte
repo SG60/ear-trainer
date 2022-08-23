@@ -3,6 +3,10 @@
 	import * as Tone from 'tone';
 	import { getRandomInt } from '$lib/mathUtils';
 
+	import { supabase } from '$lib/supabaseClient';
+	import { user } from '$lib/sessionStore';
+	import type { PostgrestError } from '@supabase/supabase-js';
+
 	let playInterval: (arg0: Tone.Unit.Frequency, arg1: number) => void;
 
 	onMount(async () => {
@@ -10,7 +14,7 @@
 		setupNewQuestion();
 	});
 
-	let questionsTotal = 10;
+	let questionsTotal = 3;
 	let questionsRemaining = questionsTotal;
 
 	let startingNote: Tone.Unit.Frequency, intervalSemitones: number;
@@ -20,6 +24,8 @@
 	let notPlayedNewQuestion = true;
 
 	let numberOfTries = 0;
+
+	let answers: { correct: boolean; interval: number }[] = [];
 
 	function setupNewQuestion() {
 		startingNote = Tone.Frequency(getRandomInt(60, 73), 'midi').toNote();
@@ -37,14 +43,58 @@
 		if (submittedInterval === intervalSemitones) {
 			questionsRemaining = questionsRemaining - 1;
 			console.log('success');
+
+			answers.push({
+				correct: true,
+				interval: submittedInterval
+			});
 			lastAnswerCorrect = true;
 
 			setupNewQuestion();
 		} else {
 			console.log('wrong');
+
+			answers.push({
+				correct: false,
+				interval: submittedInterval
+			});
 			lastAnswerCorrect = false;
 			numberOfTries++;
 		}
+
+		if (questionsRemaining === 0 && $user) {
+			submitQuestionScore();
+		}
+	}
+
+	async function submitQuestionScore(): Promise<'success' | { error: PostgrestError }> {
+		const { data, error } = (await supabase.from('games_played').insert({
+			user_id: $user.id,
+			is_public: true
+		})) as { data: { id: number }[]; error: undefined } | { data: null; error: PostgrestError };
+		console.log(data);
+
+		if (error) {
+			return { error: error };
+		}
+
+		const { data: data2, error: error2 } = await supabase.from('answers').insert(
+			answers.map((answer) => {
+				return {
+					game_played_id: data[0].id,
+					user_id: $user.id,
+					question_data: { interval: answer.interval },
+					correct: answer.correct,
+					question_type: 1
+				};
+			})
+		);
+		console.log(data2);
+		if (error2) {
+			return { error: error2 };
+		}
+
+		return 'success';
 	}
 
 	const semitonesSolfege = {
@@ -126,7 +176,7 @@
 	{#if lastAnswerCorrect === true && notPlayedNewQuestion}
 		<div class="h-12 w-full bg-green-200 text-center">Correct answer!!</div>
 	{:else if lastAnswerCorrect === false}
-		<div class="py-8 my-4 w-full bg-red-200 text-center">Try again! Incorrect answer!!</div>
+		<div class="my-4 w-full bg-red-200 py-8 text-center">Try again! Incorrect answer!!</div>
 	{/if}
 {:else}
 	All done!
