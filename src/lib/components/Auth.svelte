@@ -27,7 +27,7 @@
 			<div class="text-sm text-gray-600">Check your email for the login link!</div>
 		{:else}
 			<h1 class="text-2xl">Log In</h1>
-			<p><label for="email">Sign in via a link sent your email address</label></p>
+			<p><label for="email">Sign in via a link sent to your email address</label></p>
 			<div class="w-full">
 				<input
 					id="email"
