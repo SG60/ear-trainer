@@ -6,11 +6,7 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('@tailwindcss/forms')],
-
-	corePlugins: {
-		preflight: false // disable preflight, using styles/base.css instead
-	}
+	plugins: [require('@tailwindcss/forms')]
 };
 
 module.exports = config;

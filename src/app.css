@@ -1,13 +1,20 @@
-@import 'tailwindcss/base';
-@import './styles/base.css';
+@layer base.tailwind, base.sg, components;
+@import './styles/buttons.css' layer(base.sg);
 
-@import 'tailwindcss/components';
-@import './styles/buttons.css';
+@layer base.tailwind {
+	@tailwind base;
+}
 
-@import 'tailwindcss/utilities';
+@layer components.tailwind {
+	@tailwind components;
+}
 
-body > div {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
+@tailwind utilities;
+
+@layer base.sg {
+	body > div {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+	}
 }
