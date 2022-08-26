@@ -7,7 +7,7 @@ specifiers:
   '@sg60/sam-svelte-components': 2.1.4
   '@supabase/supabase-js': 1.35.6
   '@sveltejs/adapter-vercel': 1.0.0-next.67
-  '@sveltejs/kit': 1.0.0-next.434
+  '@sveltejs/kit': 1.0.0-next.433
   '@tailwindcss/forms': 0.5.2
   '@typescript-eslint/eslint-plugin': 5.35.1
   '@typescript-eslint/parser': 5.35.1
@@ -36,7 +36,7 @@ devDependencies:
   '@sg60/sam-svelte-components': 2.1.4_svelte@3.49.0
   '@supabase/supabase-js': 1.35.6
   '@sveltejs/adapter-vercel': 1.0.0-next.67
-  '@sveltejs/kit': 1.0.0-next.434_svelte@3.49.0+vite@3.0.9
+  '@sveltejs/kit': 1.0.0-next.433_svelte@3.49.0+vite@3.0.9
   '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.8
   '@typescript-eslint/eslint-plugin': 5.35.1_4kgehhvxgrxdvptdn2db7re534
   '@typescript-eslint/parser': 5.35.1_shit3uhl6a7megkzgoz6xssnfa
@@ -325,8 +325,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.434_svelte@3.49.0+vite@3.0.9:
-    resolution: {integrity: sha512-/TcONzxn7lW/yI5uCp1PJr5RhHLOtaoajlNCTv/Ncx/D857E3hXprPeXNfxw3m6hWYZHUBa02+zguCq8Rvd7xA==}
+  /@sveltejs/kit/1.0.0-next.433_svelte@3.49.0+vite@3.0.9:
+    resolution: {integrity: sha512-8vQFGvKMZYlSGNSafv4R2u1Q8WdsTY5W0qFLs8c6paiyuu9e/OeqbsyYfrDTan8dxxultNMPpgLrIBa0wGxguQ==}
     engines: {node: '>=16.9'}
     hasBin: true
     requiresBuild: true
