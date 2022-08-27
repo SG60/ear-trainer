@@ -13,7 +13,7 @@
 	});
 </script>
 
-<div class="mx-auto flex max-w-2xl justify-evenly rounded-xl border shadow-xl">
+<div class="mx-auto flex flex-col max-w-2xl justify-evenly rounded-xl border shadow-xl">
 	{#if loading}
 		<LoadingRing />
 	{:else}
