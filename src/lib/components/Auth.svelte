@@ -84,7 +84,7 @@
 			</div>
 			<div class="w-full">
 				<button
-					class="text-xs shadow-none border-none hover:underline font-normal"
+					class="border-none text-xs font-normal shadow-none hover:underline"
 					type="button"
 					on:click={() => (usingPassword = !usingPassword)}
 				>
