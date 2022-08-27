@@ -15,12 +15,9 @@
 
 	let loading = true;
 
-	let answers: any[] | null;
 	onMount(async () => {
 		if (!$user) goto('/account/login');
 		else loading = false;
-
-		({ data: answers } = await supabase.from('answers').select('*')) as { data: any[] };
 	});
 </script>
 
@@ -31,16 +28,3 @@
 		<Profile />
 	{/if}
 </div>
-
-<ul>
-	{#if answers}
-		{#each answers as answer}
-			<li>
-				question_data: {answer.question_data}
-				id: {answer.id}
-				question_type: {answer.question_type}
-				correct: {answer.correct}
-			</li>
-		{/each}
-	{/if}
-</ul>
