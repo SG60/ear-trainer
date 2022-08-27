@@ -1,15 +1,8 @@
-@layer base.tailwind, base.sg, components;
+/* @layer base.tailwind, base.sg, components; */
+@import 'tailwindcss/base' layer(base.tailwind);
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import './styles/buttons.css' layer(base.sg);
-
-@layer base.tailwind {
-	@tailwind base;
-}
-
-@layer components.tailwind {
-	@tailwind components;
-}
-
-@tailwind utilities;
 
 @layer base.sg {
 	body > div {
