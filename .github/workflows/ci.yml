@@ -68,7 +68,7 @@ jobs:
       - uses: ./.github/actions/pnpm-node-setup
 
       - run: |
-          npx playwright install
+          pnpx playwright install
 
       - name: test
         run: |
