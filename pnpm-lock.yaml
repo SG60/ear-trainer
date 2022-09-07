@@ -4,7 +4,7 @@ specifiers:
   '@playwright/test': 1.25.2
   '@sentry/svelte': 7.11.1
   '@sentry/tracing': 7.11.1
-  '@sg60/sam-svelte-components': 2.1.4
+  '@sg60/sam-svelte-components': 3.0.1
   '@supabase/supabase-js': 1.35.6
   '@sveltejs/adapter-vercel': 1.0.0-next.67
   '@sveltejs/kit': 1.0.0-next.432
@@ -33,7 +33,7 @@ devDependencies:
   '@playwright/test': 1.25.2
   '@sentry/svelte': 7.11.1_svelte@3.50.0
   '@sentry/tracing': 7.11.1
-  '@sg60/sam-svelte-components': 2.1.4_svelte@3.50.0
+  '@sg60/sam-svelte-components': 3.0.1_svelte@3.50.0
   '@supabase/supabase-js': 1.35.6
   '@sveltejs/adapter-vercel': 1.0.0-next.67
   '@sveltejs/kit': 1.0.0-next.432_svelte@3.50.0+vite@3.0.9
@@ -258,8 +258,8 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /@sg60/sam-svelte-components/2.1.4_svelte@3.50.0:
-    resolution: {integrity: sha512-VrtNZ3RGgr1pY0Upan+Wa0NP1RilGzvamTyP+EGM/ZfzMFE8erW69sAT7ZGrvbLEe+jQ9LJzbgsGUWLwLM+0Dg==, tarball: download/@SG60/sam-svelte-components/2.1.4/7908c897755ddb1b73f82c51613115f606e3f16b}
+  /@sg60/sam-svelte-components/3.0.1_svelte@3.50.0:
+    resolution: {integrity: sha512-68NL6p9eotVAwfZtJwGi/c7/Gr3E0NNBtfp9EFjNonSUnrxj47H4c95OntIaGcz7RBckKZS5q8FbTrvkDDQfYQ==, tarball: download/@SG60/sam-svelte-components/3.0.1/bcfe0c215504e86fc7790b03b33743186222d6cc}
     peerDependencies:
       svelte: ^3.44.0
     dependencies:
