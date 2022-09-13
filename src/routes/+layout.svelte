@@ -23,7 +23,7 @@
 	import { supabase } from '$lib/supabaseClient';
 	import type { User } from '@supabase/supabase-js';
 	import type { LayoutData } from './$types';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 
 	/** @type{import('./$types').LayoutData} */
 	export let data: LayoutData;
@@ -45,7 +45,7 @@
 			<a
 				href={page}
 				class="m-1 bg-lime-100/50 p-2 hover:bg-lime-300 hover:underline"
-				sveltekit:prefetch
+				data-sveltekit-prefetch
 			>
 				{page}
 			</a>
