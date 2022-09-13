@@ -14,7 +14,7 @@
 			"groupName": "SvelteKit monorepo"
 		},
 		{
-			"matchPackageNames": ["svelte-check", "@playwright/test", "typescript"],
+			"matchPackageNames": ["svelte-check", "@playwright/test", "typescript", "autoprefixer"],
 			"automerge": true
 		}
 	],
