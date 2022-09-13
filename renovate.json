@@ -8,13 +8,22 @@
 		":automergeLinters",
 		":automergeTesters"
 	],
+	"labels": ["dependencies"],
+	"automergeType": "branch",
 	"packageRules": [
 		{
 			"matchPackagePatterns": ["^@sveltejs/"],
 			"groupName": "SvelteKit monorepo"
 		},
 		{
-			"matchPackageNames": ["svelte-check", "@playwright/test", "typescript", "autoprefixer", "vite", "pnpm"],
+			"matchPackageNames": [
+				"svelte-check",
+				"@playwright/test",
+				"typescript",
+				"autoprefixer",
+				"vite",
+				"pnpm"
+			],
 			"automerge": true
 		}
 	],
