@@ -6,8 +6,8 @@ specifiers:
   '@sentry/tracing': 7.12.1
   '@sg60/sam-svelte-components': 3.0.1
   '@supabase/supabase-js': 1.35.6
-  '@sveltejs/adapter-vercel': 1.0.0-next.74
-  '@sveltejs/kit': 1.0.0-next.481
+  '@sveltejs/adapter-vercel': 1.0.0-next.75
+  '@sveltejs/kit': 1.0.0-next.483
   '@tailwindcss/forms': 0.5.3
   '@typescript-eslint/eslint-plugin': 5.37.0
   '@typescript-eslint/parser': 5.37.0
@@ -35,8 +35,8 @@ devDependencies:
   '@sentry/tracing': 7.12.1
   '@sg60/sam-svelte-components': 3.0.1_svelte@3.50.1
   '@supabase/supabase-js': 1.35.6
-  '@sveltejs/adapter-vercel': 1.0.0-next.74
-  '@sveltejs/kit': 1.0.0-next.481_svelte@3.50.1+vite@3.1.0
+  '@sveltejs/adapter-vercel': 1.0.0-next.75
+  '@sveltejs/kit': 1.0.0-next.483_svelte@3.50.1+vite@3.1.0
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
   '@typescript-eslint/eslint-plugin': 5.37.0_22c5fnooleyfkzrkkgdmel5kmi
   '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
@@ -321,8 +321,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.74:
-    resolution: {integrity: sha512-BMAeib/aH0JdCyMncnugZteVMc47DfKtqE49BpH8JtiIBna34mkYevUWFLyIEVjoNUu2hHr9GMZXBI0q7JL8tQ==}
+  /@sveltejs/adapter-vercel/1.0.0-next.75:
+    resolution: {integrity: sha512-aFy24cx/N7fiTkmSMKB/9BTPJe5Dqre7mUMGwzguugr8FlZw/uvkjcNoqr7XrLqPCB+C550vQOJ/KeEV0g3NwQ==}
     dependencies:
       '@vercel/nft': 0.22.1
       esbuild: 0.15.7
@@ -331,8 +331,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.481_svelte@3.50.1+vite@3.1.0:
-    resolution: {integrity: sha512-rgt6KKjUmx/S/a/duntAp+yds9F3fSm6uq8nvfWHuT1aVGSC5sOdNDrKqck7PCUc9/GPJ6WJu3et5R69hqevRw==}
+  /@sveltejs/kit/1.0.0-next.483_svelte@3.50.1+vite@3.1.0:
+    resolution: {integrity: sha512-0aiVdVJSy1kiK7xp4bw81qjDkErVaA6oIPlpbjsIYe2UYfeg3aRtST41b6XzLbyg61qLlHVGoM5WTLTIdLnbAQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -344,7 +344,7 @@ packages:
       cookie: 0.5.0
       devalue: 3.1.3
       kleur: 4.1.5
-      magic-string: 0.26.2
+      magic-string: 0.26.3
       mime: 3.0.0
       node-fetch: 3.2.10
       sade: 1.8.1
