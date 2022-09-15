@@ -8,6 +8,8 @@
 	let loading = true;
 
 	onMount(() => {
+		throw 'test error for sentry!!';
+
 		if ($user) goto('/account');
 		else loading = false;
 	});
