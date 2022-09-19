@@ -1,6 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { loadEnv, defineConfig } from 'vite';
-import type { Plugin } from 'vite';
+import { loadEnv, defineConfig, type ResolvedConfig, type Plugin } from 'vite';
 
 import type {
 	SentryCliCommitsOptions,
@@ -58,6 +57,8 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 	const virtualModuleId = 'virtual:sentry-upload';
 	const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
+	let config: ResolvedConfig;
+
 	/* Initialise new SentryCli instance */
 	const cli = new SentryCli(undefined, {
 		authToken: options.authToken,
@@ -86,7 +87,6 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 	return {
 		name: 'sentry-upload',
 		enforce: 'post',
-		apply: 'build',
 
 		/* Virtual module stuff
 		 * Types for the virtual module are in vite-plugin-sentry-upload.d.ts
@@ -101,45 +101,53 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 				return `export const release = "${currentRelease}";`;
 			}
 		},
+		configResolved(resolvedConfig) {
+			config = resolvedConfig;
+		},
 
 		/* Sentry stuff */
 		async closeBundle() {
-			if (!currentRelease) {
-				this.warn('No release found, skipping Sentry upload.');
-			} else {
-				try {
-					console.log(`Creating release: ${currentRelease} (for ${options.project})`);
-					console.log(`Environment: ${options.deploy?.env}`);
-					// Create new Sentry release
-					await cli.releases.new(currentRelease);
+			if (config.isProduction && config.build.ssr) {
+				if (!currentRelease) {
+					this.warn('No release found, skipping Sentry upload.');
+				} else {
+					try {
+						console.log(`Creating release: ${currentRelease} (for ${options.project})`);
+						console.log(`Environment: ${options.deploy?.env}`);
+						// Create new Sentry release
+						await cli.releases.new(currentRelease);
 
-					// Upload sourcemaps to Sentry
-					console.log('Uploading sourcemaps to Sentry...');
-					await cli.releases.uploadSourceMaps(currentRelease, options.sourceMaps);
+						// Upload sourcemaps to Sentry
+						console.log('Uploading sourcemaps to Sentry...');
+						await cli.releases.uploadSourceMaps(currentRelease, options.sourceMaps);
 
-					if (options.setCommits) {
-						console.log('Setting commits...');
-						if (options.setCommits.auto || (options.setCommits.repo && options.setCommits.commit)) {
-							await cli.releases.setCommits(currentRelease, options.setCommits);
+						if (options.setCommits) {
+							console.log('Setting commits...');
+							if (
+								options.setCommits.auto ||
+								(options.setCommits.repo && options.setCommits.commit)
+							) {
+								await cli.releases.setCommits(currentRelease, options.setCommits);
+							}
 						}
-					}
 
-					// Finalise the release
-					if (options.finalise) {
-						console.log('Finalising release...');
-						await cli.releases.finalize(currentRelease);
-					}
+						// Finalise the release
+						if (options.finalise) {
+							console.log('Finalising release...');
+							await cli.releases.finalize(currentRelease);
+						}
 
-					// Set deploy options
-					if (options.deploy && options.deploy.env) {
-						console.log('Setting deploy options...');
-						await cli.releases.newDeploy(currentRelease, options.deploy);
-					}
+						// Set deploy options
+						if (options.deploy && options.deploy.env) {
+							console.log('Setting deploy options...');
+							await cli.releases.newDeploy(currentRelease, options.deploy);
+						}
 
-					console.log('Sentry upload complete!');
-				} catch (error) {
-					const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-					this.warn(`Sentry upload failed: ${errorMessage}`);
+						console.log('Sentry upload complete!');
+					} catch (error) {
+						const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+						this.warn(`Sentry upload failed: ${errorMessage}`);
+					}
 				}
 			}
 		}
