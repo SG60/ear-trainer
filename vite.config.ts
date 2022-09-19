@@ -1,5 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { loadEnv, defineConfig } from 'vite';
+import type { Plugin } from 'vite';
 
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '');
@@ -9,17 +10,38 @@ export default defineConfig(({ mode }) => {
 	};
 });
 
-import { loadEnv } from 'vite';
+function sentryUploadPlugin(sentryEnvironment: string): Plugin {
+	const virtualModuleId = 'virtual:sentry-upload';
+	const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
-/** @type {(environment: string) => import('vite').Plugin} */
-function sentryUploadPlugin(sentryEnvironment) {
 	return {
 		name: 'sentry-upload',
+		enforce: 'post',
 		apply: 'build',
-		writeBundle(options, bundle) {
+
+		/* Virtual module stuff */
+		resolveId(id) {
+			if (id === virtualModuleId) {
+				return resolvedVirtualModuleId;
+			}
+		},
+		load(id) {
+			if (id === resolvedVirtualModuleId) {
+				return `export const release = "release from virtual module"`;
+			}
+		},
+
+		/* Sentry stuff */
+		closeBundle() {
+			const currentRelease = await getReleasePromise(cli, options);
+
 			// upload sourcemaps to sentry
 			console.log('uploading sourcemaps to sentry');
 			console.log(`environment: ${sentryEnvironment}`);
 		}
 	};
+}
+
+async function getReleasePromise(cli, options) {
+	return null;
 }
