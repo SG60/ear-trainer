@@ -2,26 +2,59 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { loadEnv, defineConfig } from 'vite';
 import type { Plugin } from 'vite';
 
-import type { SentryCliOptions, SentryCliReleases } from '@sentry/cli';
+import type {
+	SentryCliCommitsOptions,
+	SentryCliNewDeployOptions,
+	SentryCliOptions,
+	SentryCliUploadSourceMapsOptions
+} from '@sentry/cli';
 import SentryCli from '@sentry/cli';
 
+/** Vite Config */
 export default defineConfig(({ mode }) => {
 	const env = loadEnv(mode, process.cwd(), '');
 	return {
 		plugins: [
 			sveltekit(),
-			sentryUploadPlugin({ sentryEnvironment: env.PUBLIC_SENTRY_ENVIRONMENT })
+
+			sentryUploadPlugin({
+				url: 'https://sentry.io',
+				org: 'sam-greening',
+				project: 'ear-trainer',
+				authToken: env.PRIVATE_SENTRY_CLI_AUTH_TOKEN,
+
+				deploy: {
+					env: env.PUBLIC_SENTRY_ENVIRONMENT
+				},
+				sourceMaps: {
+					include: ['./.vercel/output']
+				},
+				setCommits: {
+					auto: true
+				},
+
+				silent: true
+			})
 		],
+
 		build: { sourcemap: true }
 	};
 });
 
 interface ViteSentryPluginOptions extends SentryCliOptions /*, SentryCliReleases*/ {
-	sentryEnvironment: string;
+	/**
+	Unique name for the release
+	Defaults to sentry-cli releases propose-version (requires access to GIT and root directory to be repo)
+	**/
 	release?: string;
+	sourceMaps: SentryCliUploadSourceMapsOptions;
+	setCommits?: SentryCliCommitsOptions;
+	deploy?: SentryCliNewDeployOptions;
+	finalise?: boolean;
 }
 
 async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plugin> {
+	/** Vite virtual module prefix */
 	const virtualModuleId = 'virtual:sentry-upload';
 	const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
@@ -31,8 +64,22 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 		org: options.org,
 		project: options.project,
 		url: options.url,
-		vcsRemote: options.vcsRemote
+		vcsRemote: options.vcsRemote,
+		silent: options.silent
 	});
+
+	/** Prepare sentry release and returns promise.
+	 * Defaults to proposed version if options.release is not set. */
+	const getReleasePromise = async (
+		cli: SentryCli,
+		options: {
+			release?: string;
+		} = {}
+	) => {
+		return (options.release ? Promise.resolve(options.release) : cli.releases.proposeVersion())
+			.then((version: string) => `${version}`.trim())
+			.catch(() => undefined);
+	};
 
 	const currentRelease = await getReleasePromise(cli, options);
 
@@ -41,7 +88,9 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 		enforce: 'post',
 		apply: 'build',
 
-		/* Virtual module stuff */
+		/* Virtual module stuff
+		 * Types for the virtual module are in vite-plugin-sentry-upload.d.ts
+		 */
 		resolveId(id) {
 			if (id === virtualModuleId) {
 				return resolvedVirtualModuleId;
@@ -56,29 +105,43 @@ async function sentryUploadPlugin(options: ViteSentryPluginOptions): Promise<Plu
 		/* Sentry stuff */
 		async closeBundle() {
 			if (!currentRelease) {
-				this.warn('No release found, skipping Sentry upload');
+				this.warn('No release found, skipping Sentry upload.');
 			} else {
-				// upload sourcemaps to sentry
-				console.log('uploading sourcemaps to sentry (FAKE)');
-				console.log(`environment: ${options.sentryEnvironment}`);
-				console.log(`currentRelease: ${currentRelease}`);
+				try {
+					console.log(`Creating release: ${currentRelease} (for ${options.project})`);
+					console.log(`Environment: ${options.deploy?.env}`);
+					// Create new Sentry release
+					await cli.releases.new(currentRelease);
+
+					// Upload sourcemaps to Sentry
+					console.log('Uploading sourcemaps to Sentry...');
+					await cli.releases.uploadSourceMaps(currentRelease, options.sourceMaps);
+
+					if (options.setCommits) {
+						console.log('Setting commits...');
+						if (options.setCommits.auto || (options.setCommits.repo && options.setCommits.commit)) {
+							await cli.releases.setCommits(currentRelease, options.setCommits);
+						}
+					}
+
+					// Finalise the release
+					if (options.finalise) {
+						console.log('Finalising release...');
+						await cli.releases.finalize(currentRelease);
+					}
+
+					// Set deploy options
+					if (options.deploy && options.deploy.env) {
+						console.log('Setting deploy options...');
+						await cli.releases.newDeploy(currentRelease, options.deploy);
+					}
+
+					console.log('Sentry upload complete!');
+				} catch (error) {
+					const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+					this.warn(`Sentry upload failed: ${errorMessage}`);
+				}
 			}
 		}
 	};
 }
-
-/* Prepare sentry release and returns promise */
-const getReleasePromise = (
-	cli: SentryCli,
-	options: {
-		/*
-		Unique name for release
-		defaults to sentry-cli releases propose version (requires access to GIT and root directory to be repo)
-		*/
-		release?: string;
-	} = {}
-) => {
-	return (options.release ? Promise.resolve(options.release) : cli.releases.proposeVersion())
-		.then((version: string) => `${version}`.trim())
-		.catch(() => undefined);
-};

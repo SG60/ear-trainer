@@ -4,6 +4,8 @@
 	import * as Sentry from '@sentry/svelte';
 	import { BrowserTracing } from '@sentry/tracing';
 	import { PUBLIC_SENTRY_ENVIRONMENT } from '$env/static/public';
+
+	import { release } from 'virtual:sentry-upload';
 </script>
 
 <script lang="ts">
@@ -35,6 +37,8 @@
 			tracesSampleRate: 1.0
 		});
 	}
+
+	console.log(`Sentry Release: ${release}`);
 </script>
 
 {#if $navigating}

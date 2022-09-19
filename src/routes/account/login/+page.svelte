@@ -8,7 +8,7 @@
 	let loading = true;
 
 	onMount(() => {
-		throw 'test error for sentry!!';
+		throw 'test error for sentry!!'; // TODO:
 
 		if ($user) goto('/account');
 		else loading = false;
