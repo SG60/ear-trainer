@@ -20,7 +20,9 @@ export default defineConfig(({ mode }) => {
 				url: 'https://sentry.io',
 				org: 'sam-greening',
 				project: 'ear-trainer',
-				authToken: env.PRIVATE_SENTRY_CLI_AUTH_TOKEN,
+				authToken: env.PRIVATE_SENTRY_CLI_AUTH_TOKEN
+					? env.PRIVATE_SENTRY_CLI_AUTH_TOKEN
+					: undefined,
 
 				deploy: {
 					env: env.PUBLIC_SENTRY_ENVIRONMENT
