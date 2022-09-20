@@ -13,7 +13,7 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
-		"@playwright/test": "1.25.2",
+		"@playwright/test": "1.26.0",
 		"@sentry/svelte": "7.13.0",
 		"@sentry/tracing": "7.13.0",
 		"@sg60/sam-svelte-components": "3.0.1",
