@@ -21,6 +21,7 @@ specifiers:
   postcss-load-config: 4.0.1
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13
+  rimraf: ^3.0.2
   svelte: 3.50.1
   svelte-check: 2.9.0
   svelte-preprocess: 4.10.7
@@ -51,6 +52,7 @@ devDependencies:
   postcss-load-config: 4.0.1_postcss@8.4.16
   prettier: 2.7.1
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
+  rimraf: 3.0.2
   svelte: 3.50.1
   svelte-check: 2.9.0_zy537mcxrfn3wq4nghluxnsi5a
   svelte-preprocess: 4.10.7_sxt3mkf5m54vn3maobdwhqzitu
