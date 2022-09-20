@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@playwright/test': 1.25.2
-  '@sentry/cli': 2.3.1
+  '@sentry/cli': 2.5.2
   '@sentry/svelte': 7.13.0
   '@sentry/tracing': 7.13.0
   '@sg60/sam-svelte-components': 3.0.1
@@ -32,7 +32,7 @@ specifiers:
 
 devDependencies:
   '@playwright/test': 1.25.2
-  '@sentry/cli': 2.3.1
+  '@sentry/cli': 2.5.2
   '@sentry/svelte': 7.13.0_svelte@3.50.1
   '@sentry/tracing': 7.13.0
   '@sg60/sam-svelte-components': 3.0.1_svelte@3.50.1
@@ -205,8 +205,8 @@ packages:
       tslib: 1.14.1
     dev: true
 
-  /@sentry/cli/2.3.1:
-    resolution: {integrity: sha512-f21BJhiR57/oy0JOZo2prxUIisEMiJKNxg7JMU5fl10AVodnS54yIFsqlZ2Uxkhy9dJyqPGc8lgkEtr+Yui+Kg==}
+  /@sentry/cli/2.5.2:
+    resolution: {integrity: sha512-1lSLEplRuvM8gPNbbqNw0Xj8pweMHvA9b3HL9cweWR4Fm4zYuYfcIJb4rvGK2qoy34r+exQ+/qqovm3LWOH23g==}
     engines: {node: '>= 12'}
     hasBin: true
     requiresBuild: true
