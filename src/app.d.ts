@@ -9,3 +9,7 @@ declare namespace App {
 	// interface Session {}
 	// interface Stuff {}
 }
+
+declare module 'virtual:sentry-upload' {
+	export const release: string;
+}
