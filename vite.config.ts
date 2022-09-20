@@ -31,7 +31,8 @@ export default defineConfig(({ mode }) => {
 					include: ['./.vercel/output']
 				},
 				setCommits: {
-					auto: true
+					auto: true,
+					ignoreMissing: true
 				},
 
 				silent: true
