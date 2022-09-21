@@ -17,7 +17,7 @@
 		"@sentry/svelte": "7.13.0",
 		"@sentry/tracing": "7.13.0",
 		"@sg60/sam-svelte-components": "3.0.1",
-		"@supabase/supabase-js": "1.35.6",
+		"@supabase/supabase-js": "1.35.7",
 		"@sveltejs/adapter-vercel": "1.0.0-next.76",
 		"@sveltejs/kit": "1.0.0-next.491",
 		"@tailwindcss/forms": "0.5.3",
