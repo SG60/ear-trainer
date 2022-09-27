@@ -3,7 +3,7 @@
 	import * as Tone from 'tone';
 	import { getRandomInt } from '$lib/mathUtils';
 
-	let synth: Tone.Synth<Tone.SynthOptions>;
+	let synth: Tone.PolySynth;
 
 	onMount(async () => {
 		// create a new synth and connect it to the main output
