@@ -7,7 +7,7 @@
 	import { goto } from '$app/navigation';
 	import LoadingRing from '$components/LoadingRing.svelte';
 
-	user.set(supabase.auth.user() as User);
+	supabase.auth.getSession().then((promise) => user.set(promise.data.session?.user ?? undefined));
 
 	supabase.auth.onAuthStateChange((_, session) => {
 		user.set(session?.user as User);

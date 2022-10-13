@@ -9,19 +9,21 @@
 	function getProfile(_node: any) {
 		try {
 			loading = true;
-			const user = supabase.auth.user();
+			supabase.auth.getUser().then((promise) => {
+				const user = promise.data.user;
 
-			supabase
-				.from('profiles')
-				.select(`username`)
-				.eq('id', user?.id)
-				.single()
-				.then(({ data, error, status }) => {
-					if (data) {
-						username = data.username;
-					}
-					if (error && status !== 406) throw error;
-				});
+				supabase
+					.from('profiles')
+					.select(`username`)
+					.eq('id', user?.id)
+					.single()
+					.then(({ data, error, status }) => {
+						if (data) {
+							username = data.username;
+						}
+						if (error && status !== 406) throw error;
+					});
+			});
 		} catch (error: any) {
 			alert(error.message);
 		} finally {
@@ -32,7 +34,9 @@
 	async function updateProfile() {
 		try {
 			loading = true;
-			const user = supabase.auth.user();
+			const {
+				data: { user }
+			} = await supabase.auth.getUser();
 			if (!user) return;
 
 			const updates = {
@@ -41,9 +45,7 @@
 				updated_at: new Date()
 			};
 
-			let { error } = await supabase.from('profiles').upsert(updates, {
-				returning: 'minimal'
-			});
+			let { error } = await supabase.from('profiles').upsert(updates);
 
 			if (error) throw error;
 		} catch (error: any) {
@@ -70,39 +72,41 @@
 	}
 </script>
 
-<form use:getProfile on:submit|preventDefault={updateProfile} class="grid gap-6 py-8 px-4">
-	<h1 class="text-2xl">Account Management</h1>
-	{#if signOutState === 'in'}
-		<div class="grid uppercase">
-			<label for="email">Email</label>
-			<input id="email" type="text" value={$user.email} disabled />
-		</div>
-		<div class="grid">
-			<label for="username">Name</label>
-			<input id="username" type="text" bind:value={username} />
-		</div>
+{#if $user}
+	<form use:getProfile on:submit|preventDefault={updateProfile} class="grid gap-6 py-8 px-4">
+		<h1 class="text-2xl">Account Management</h1>
+		{#if signOutState === 'in'}
+			<div class="grid uppercase">
+				<label for="email">Email</label>
+				<input id="email" type="text" value={$user.email} disabled />
+			</div>
+			<div class="grid">
+				<label for="username">Name</label>
+				<input id="username" type="text" bind:value={username} />
+			</div>
 
-		<div>
-			<input
-				class="w-full"
-				type="submit"
-				value={loading ? 'Loading ...' : 'Update'}
-				disabled={loading}
-			/>
-		</div>
+			<div>
+				<input
+					class="w-full"
+					type="submit"
+					value={loading ? 'Loading ...' : 'Update'}
+					disabled={loading}
+				/>
+			</div>
 
-		<div>
-			<button id="signOutButton" class="w-full" on:click={signOut} disabled={loading}>
-				Sign Out
-			</button>
-		</div>
-	{:else if signOutState === 'signingOut'}
-		<LoadingRing />
-	{:else}
-		<div class="text-sm text-gray-600">You have been signed out.</div>
-		<a href="/account/login">Sign in again</a>
-	{/if}
-</form>
+			<div>
+				<button id="signOutButton" class="w-full" on:click={signOut} disabled={loading}>
+					Sign Out
+				</button>
+			</div>
+		{:else if signOutState === 'signingOut'}
+			<LoadingRing />
+		{:else}
+			<div class="text-sm text-gray-600">You have been signed out.</div>
+			<a href="/account/login">Sign in again</a>
+		{/if}
+	</form>
+{/if}
 
 <style>
 	#signOutButton {

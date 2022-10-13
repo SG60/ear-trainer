@@ -13,16 +13,17 @@
 	import '../app.css';
 	import { user } from '$lib/sessionStore';
 	import { supabase } from '$lib/supabaseClient';
-	import type { User } from '@supabase/supabase-js';
 	import type { LayoutData } from './$types';
 	import { browser } from '$app/environment';
 
 	/** @type{import('./$types').LayoutData} */
 	export let data: LayoutData;
 
-	user.set(supabase.auth.user() as User);
+	supabase.auth.getSession().then((promise) => user.set(promise.data.session?.user ?? undefined));
 	supabase.auth.onAuthStateChange((_, session) => {
-		user.set(session?.user as User);
+		if (session?.user) {
+			user.set(session.user);
+		}
 	});
 
 	if (browser) {
