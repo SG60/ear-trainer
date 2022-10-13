@@ -68,8 +68,14 @@
 	}
 
 	async function submitQuestionScore(): Promise<'success' | { error: PostgrestError }> {
+		if (!$user) {
+			console.log('No current user, so the score is not being submitted.');
+			return 'success';
+		}
+
+		const userId = $user.id;
 		const { data, error } = (await supabase.from('games_played').insert({
-			user_id: $user.id,
+			user_id: userId,
 			is_public: true
 		})) as { data: { id: number }[]; error: undefined } | { data: null; error: PostgrestError };
 		console.log(data);
@@ -82,7 +88,7 @@
 			answers.map((answer) => {
 				return {
 					game_played_id: data[0].id,
-					user_id: $user.id,
+					user_id: userId,
 					question_data: { interval: answer.interval },
 					correct: answer.correct,
 					question_type: 1
@@ -96,22 +102,6 @@
 
 		return 'success';
 	}
-
-	const semitonesSolfege = {
-		// NOTE: might need to add variants for flats and sharps at some point?
-		0: 'Do',
-		1: 'Ra',
-		2: 'Re',
-		3: 'Me',
-		4: 'Mi',
-		5: 'Fa',
-		6: 'Fi',
-		7: 'Sol',
-		8: 'Le',
-		9: 'La',
-		10: 'Te',
-		11: 'Ti'
-	};
 
 	const semitonesIntervals = [
 		'unison',

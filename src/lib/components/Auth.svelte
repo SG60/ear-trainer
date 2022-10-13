@@ -11,7 +11,7 @@
 		if (usingPassword) {
 			try {
 				loading = true;
-				const { error } = await supabase.auth.signIn({ email, password });
+				const { error } = await supabase.auth.signInWithPassword({ email, password });
 				if (error) throw error;
 				submitted = true;
 			} catch (e: any) {
@@ -23,10 +23,10 @@
 		} else {
 			try {
 				loading = true;
-				const { error } = await supabase.auth.signIn(
-					{ email },
-					{ redirectTo: window.location.origin }
-				);
+				const { error } = await supabase.auth.signInWithOtp({
+					email,
+					options: { emailRedirectTo: window.location.origin }
+				});
 				if (error) throw error;
 				alert('Check your email for the login link!');
 				submitted = true;
@@ -40,9 +40,18 @@
 	};
 
 	async function signInWithGoogle() {
-		const { user, session, error } = await supabase.auth.signIn({
-			provider: 'google'
-		});
+		try {
+			loading = true;
+			const { error } = await supabase.auth.signInWithOAuth({
+				provider: 'google'
+			});
+			if (error) throw error;
+		} catch (e: any) {
+			alert(e.error_description || e.message);
+			alert(e.message);
+		} finally {
+			loading = false;
+		}
 	}
 </script>
 
