@@ -26,6 +26,7 @@ env:
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     # Prevents duplicate runs on Renovate pull-requests (otherwise it runs for the push and the PR)
     if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'renovate/') }}
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -54,6 +55,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'renovate/') }}
     steps:
       - uses: actions/checkout@v3
@@ -68,6 +70,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'renovate/') }}
     steps:
       - uses: actions/checkout@v3
