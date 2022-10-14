@@ -1,0 +1,37 @@
+name: Supabase CI
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - 'supabase/**'
+  workflow_dispatch:
+
+# Automatically cancel in-progress actions on the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request_target' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start Supabase local development setup
+        run: supabase start
+
+      - name: Verify generated types are up-to-date
+        run: |
+          supabase gen types typescript --local > src/lib/database.types.ts
+          if ! git diff --ignore-space-at-eol --exit-code --quiet src/lib/database.types.ts; then
+            echo "Detected uncommitted changes after build. See status below:"
+            git diff
+            exit 1
+          fi
