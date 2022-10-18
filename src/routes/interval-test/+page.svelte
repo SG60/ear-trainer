@@ -107,30 +107,30 @@ SELECT submit_question('d5163409-b6b4-465f-bf96-2765c42f45c3'::uuid, true, ARRAY
 		*/
 
 		const userId = $user.id;
-		const { data, error } = (await supabase.from('games_played').insert({
+
+		type AnswerData = {
+			question_data: { [key: string]: any };
+			correct: boolean;
+			question_type: number;
+		}[];
+		const answer_data: AnswerData = answers.map((answer) => {
+			return {
+				question_data: { interval: answer.interval },
+				correct: answer.correct,
+				question_type: 1
+			};
+		});
+
+		const { error } = await supabase.rpc('submit_question', {
 			user_id: userId,
-			is_public: true
-		})) as { data: { id: number }[]; error: undefined } | { data: null; error: PostgrestError };
-		console.log(data);
+			is_public: true,
+			answer_data: answer_data
+		});
 
 		if (error) {
+			console.log('error');
+			console.log(error);
 			return { error: error };
-		}
-
-		const { data: data2, error: error2 } = await supabase.from('answers').insert(
-			answers.map((answer) => {
-				return {
-					game_played_id: data[0].id,
-					user_id: userId,
-					question_data: { interval: answer.interval },
-					correct: answer.correct,
-					question_type: 1
-				};
-			})
-		);
-		console.log(data2);
-		if (error2) {
-			return { error: error2 };
 		}
 
 		return 'success';
