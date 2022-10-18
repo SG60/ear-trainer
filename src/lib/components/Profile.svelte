@@ -4,7 +4,7 @@
 	import LoadingRing from './LoadingRing.svelte';
 
 	let loading = true;
-	let username: any;
+	let username: string;
 
 	function getProfile(_node: any) {
 		try {
@@ -18,7 +18,7 @@
 					.eq('id', user?.id)
 					.single()
 					.then(({ data, error, status }) => {
-						if (data) {
+						if (data?.username) {
 							username = data.username;
 						}
 						if (error && status !== 406) throw error;
@@ -42,7 +42,7 @@
 			const updates = {
 				id: user.id,
 				username,
-				updated_at: new Date()
+				updated_at: Date.now().toString()
 			};
 
 			let { error } = await supabase.from('profiles').upsert(updates);

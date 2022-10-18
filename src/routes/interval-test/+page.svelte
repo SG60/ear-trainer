@@ -73,31 +73,64 @@
 			return 'success';
 		}
 
+		/*
+Combined SQL function to do submissions in one transaction.
+
+CREATE TYPE answer_information as (
+  question_data jsonb,
+  correct boolean,
+  question_type int8
+);
+
+CREATE OR REPLACE FUNCTION submit_question(user_id uuid, is_public boolean, answer_data answer_information[])
+returns void                                                                                                  
+language plpgsql
+as $$
+declare
+  game_played_id int8;
+begin
+  insert into games_played("user_id","is_public") VALUES(submit_question.user_id,submit_question.is_public) RETURNING id INTO game
+_played_id;
+  INSERT INTO answers("game_played_id","user_id","question_data", "correct", "question_type")
+    SELECT * FROM unnest(array_fill(game_played_id,ARRAY[array_length(submit_question.answer_data,1)]),array_fill(submit_question.
+user_id,ARRAY[array_length(submit_question.answer_data,1)]),submit_question.answer_data);
+end;
+$$;
+
+
+Using the function:
+
+SELECT submit_question('d5163409-b6b4-465f-bf96-2765c42f45c3'::uuid, true, ARRAY[
+(jsonb_object('{{thingy,5},{ahh,1}}'),true,1), (jsonb_object('{thingy,200}'),false,1)]::answer_information[]);
+
+
+		*/
+
 		const userId = $user.id;
-		const { data, error } = (await supabase.from('games_played').insert({
+
+		type AnswerData = {
+			question_data: { [key: string]: any };
+			correct: boolean;
+			question_type: number;
+		}[];
+		const answer_data: AnswerData = answers.map((answer) => {
+			return {
+				question_data: { interval: answer.interval },
+				correct: answer.correct,
+				question_type: 1
+			};
+		});
+
+		const { error } = await supabase.rpc('submit_question', {
 			user_id: userId,
-			is_public: true
-		})) as { data: { id: number }[]; error: undefined } | { data: null; error: PostgrestError };
-		console.log(data);
+			is_public: true,
+			answer_data: answer_data
+		});
 
 		if (error) {
+			console.log('error');
+			console.log(error);
 			return { error: error };
-		}
-
-		const { data: data2, error: error2 } = await supabase.from('answers').insert(
-			answers.map((answer) => {
-				return {
-					game_played_id: data[0].id,
-					user_id: userId,
-					question_data: { interval: answer.interval },
-					correct: answer.correct,
-					question_type: 1
-				};
-			})
-		);
-		console.log(data2);
-		if (error2) {
-			return { error: error2 };
 		}
 
 		return 'success';
