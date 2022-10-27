@@ -21,6 +21,9 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PAT }}
   PUBLIC_SENTRY_ENVIRONMENT: 'github_ci'
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  # To use Turborepo Remote Caching, set the following environment variables for the job.
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,7 +47,7 @@ jobs:
 
       - name: pnpm build
         run: |
-          pnpm run build
+          pnpm turbo build
 
       - name: run Lighthouse CI
         run: |
@@ -64,9 +67,9 @@ jobs:
 
       - name: build
         run: |
-          pnpm run build
-      - run: pnpm run check
-      - run: pnpm run lint
+          pnpm turbo build
+      - run: pnpm turbo check
+      - run: pnpm turbo lint
 
   test:
     runs-on: ubuntu-latest
@@ -79,7 +82,7 @@ jobs:
 
       - run: pnpm playwright install
       - name: Run Playwright tests
-        run: pnpm run test
+        run: pnpm turbo test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
