@@ -3,7 +3,7 @@
 	"pipeline": {
 		"build": {
 			"inputs": ["src/**", "svelte.config.js", "tailwind.config.cjs", "vite.config.ts"],
-			"outputs": [".vercel/output/**"],
+			"outputs": [".vercel/output/**", ".svelte-kit/**"],
 			"outputMode": "new-only"
 		},
 		"lint": { "outputs": [] },
@@ -26,6 +26,7 @@
 			"outputMode": "new-only"
 		},
 		"format": { "cache": false, "outputs": [], "outputMode": "new-only" },
-		"dev": { "cache": false, "outputMode": "new-only" }
+		"dev": { "cache": false, "outputMode": "new-only" },
+		"preview": { "dependsOn": ["build"] }
 	}
 }
