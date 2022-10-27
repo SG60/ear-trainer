@@ -2,7 +2,10 @@
 	import { onMount } from 'svelte';
 	import * as Tone from 'tone';
 	import { getRandomInt } from '$lib/mathUtils';
-	import AnswerSubmissionModal, { QuestionType, type Answer } from '$components/AnswerSubmissionModal.svelte';
+	import AnswerSubmissionModal, {
+		QuestionType,
+		type Answer
+	} from '$components/AnswerSubmissionModal.svelte';
 
 	let playInterval: (arg0: Tone.Unit.Frequency, arg1: number) => void;
 
