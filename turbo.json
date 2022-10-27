@@ -1,0 +1,31 @@
+{
+	"$schema": "https://turborepo.org/schema.json",
+	"pipeline": {
+		"build": {
+			"inputs": ["src/**", "svelte.config.js", "tailwind.config.cjs", "vite.config.ts"],
+			"outputs": [".vercel/output/**"],
+			"outputMode": "new-only"
+		},
+		"lint": { "outputs": [] },
+		"check": {
+			"dependsOn": [],
+			"outputs": [],
+			// A package's `check` script should only be rerun when
+			// either a `.svelte` or `.ts` file has changed in `src` folders.
+			"inputs": ["src/**/*.svelte", "src/**/*.ts"],
+			"outputMode": "new-only"
+		},
+		"test": {
+			// A package's `test` script depends on that package's
+			// own `build` script being completed first.
+			"dependsOn": ["build"],
+			"outputs": [],
+			// A package's `test` script should only be rerun when
+			// either a `.svelte` or `.ts` file has changed in `src` or `test` folders.
+			"inputs": ["src/**/*.svelte", "src/**/*.ts", "test/**/*.ts", "test/**/*.svelte"],
+			"outputMode": "new-only"
+		},
+		"format": { "cache": false, "outputs": [], "outputMode": "new-only" },
+		"dev": { "cache": false, "outputMode": "new-only" }
+	}
+}
