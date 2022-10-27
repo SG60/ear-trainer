@@ -40,17 +40,17 @@
 	Refresh
 </button>
 
-{#each supabaseData as supabaseDataItem}
-	{#await supabaseDataItem}
-		<div class="w-full grid justify-center">
-			<LoadingRing />
-			Loading...
-		</div>
-	{:then { data: supaData, error }}
-		{#if error}
-			<div>Error :(</div>
-		{:else}
-			<ul class="divide-y">
+<ul class="divide-y">
+	{#each supabaseData as supabaseDataItem}
+		{#await supabaseDataItem}
+			<li class="w-full grid justify-center">
+				<LoadingRing />
+				Loading...
+			</li>
+		{:then { data: supaData, error }}
+			{#if error}
+				<li>Error :(</li>
+			{:else}
 				{#each supaData as item}
 					{@const correct = item.n_correct === item.n_questions}
 					<li class={'p-2' + (correct ? ' bg-green-700 text-green-50 font-bold' : '')}>
@@ -60,10 +60,10 @@
 						<div>{item.created_at}</div>
 					</li>
 				{/each}
-			</ul>
-		{/if}
-	{/await}
-{/each}
+			{/if}
+		{/await}
+	{/each}
+</ul>
 {#if !noMoreItems}
 	<button
 		class="my-2 w-96 text-sm"

@@ -95,7 +95,7 @@
 	<meta name="description" content="Ear Training Application" />
 </svelte:head>
 
-<h1 class="text-center text-xl">Random Intervals (from any note!)</h1>
+<h1 class="text-center text-xl">Random VERTICAL Intervals (from any note!)</h1>
 
 <ul class="flex flex-row flex-wrap justify-around">
 	<li>
