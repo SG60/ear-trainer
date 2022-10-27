@@ -10,3 +10,11 @@ export function playInterval(startNote: Tone.Unit.Frequency, interval: number) {
 		'+8n'
 	);
 }
+
+export function playVerticalInterval(startNote: Tone.Unit.Frequency, interval: number) {
+	console.log(`start: ${startNote} interval: ${interval}`);
+	synth.triggerAttackRelease(
+		[startNote, Tone.Frequency(startNote).transpose(interval).toFrequency()],
+		'3n'
+	);
+}
