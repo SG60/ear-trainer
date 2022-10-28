@@ -60,20 +60,19 @@
 	border-radius: var(--_border-radius);
 }
 
-@media (prefers-color-scheme: dark) {
+.dark
 	:where(button, .button, input[type='button'], input[type='submit'], input[type='reset'], input[type='file']),
-	:where(input[type='file'])::file-selector-button {
-		--_bg: var(--_bg-dark);
-		--_text: var(--_text-dark);
-		--_border: var(--_border-dark);
-		--_accent: var(--_accent-dark);
-		--_highlight: var(--_highlight-dark);
-		--_input-well: var(--_input-well-dark);
-		--_ink-shadow: var(--_ink-shadow-dark);
-		--_shadow-depth: var(--_shadow-depth-dark);
-		--_shadow-color: var(--_shadow-color-dark);
-		--_shadow-strength: var(--_shadow-strength-dark);
-	}
+.dark :where(input[type='file'])::file-selector-button {
+	--_bg: var(--_bg-dark);
+	--_text: var(--_text-dark);
+	--_border: var(--_border-dark);
+	--_accent: var(--_accent-dark);
+	--_highlight: var(--_highlight-dark);
+	--_input-well: var(--_input-well-dark);
+	--_ink-shadow: var(--_ink-shadow-dark);
+	--_shadow-depth: var(--_shadow-depth-dark);
+	--_shadow-color: var(--_shadow-color-dark);
+	--_shadow-strength: var(--_shadow-strength-dark);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -179,8 +178,6 @@
 }
 
 /* special dark theme styles */
-@media (prefers-color-scheme: dark) {
-	:where([type='submit'], [type='reset'], [disabled], form button:not([type='button'])) {
-		--_bg: var(--_input-well);
-	}
+.dark :where([type='submit'], [type='reset'], [disabled], form button:not([type='button'])) {
+	--_bg: var(--_input-well);
 }

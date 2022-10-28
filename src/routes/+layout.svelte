@@ -16,6 +16,7 @@
 	import type { LayoutData } from './$types';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	/** @type{import('./$types').LayoutData} */
 	export let data: LayoutData;
@@ -42,12 +43,27 @@
 		});
 	}
 
-	/** Page Meta Details */
+	let themeModeSelected: 'dark' | 'light' | null;
+	const themeOptions = ['auto', 'light', 'dark'];
+	$: console.log(themeModeSelected);
+
+	onMount(() => (themeModeSelected = localStorage.theme));
 </script>
 
 <svelte:head>
 	<title>{$page.data.title || 'Ear Trainer'}</title>
 	<meta name="description" content={$page.data.title || 'Ear Training Application'} />
+	<script>
+		// On page load
+		if (
+			localStorage.theme === 'dark' ||
+			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+		) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	</script>
 </svelte:head>
 
 {#if $navigating}
@@ -72,7 +88,7 @@
 <slot />
 
 <div class="grow" />
-<footer class="mt-20 bg-slate-50 py-8">
+<footer class="mt-20 bg-slate-50 py-8 dark:bg-slate-800">
 	<p class="text-center">
 		{#if !browser}
 			loading login info...
@@ -82,4 +98,22 @@
 			<a href="/account/login">Log in</a>
 		{/if}
 	</p>
+	<select
+		value={themeModeSelected ?? 'auto'}
+		on:change={({ currentTarget: { value } }) => {
+			value === 'auto' ? localStorage.removeItem('theme') : (localStorage.theme = value);
+			if (
+				value === 'dark' ||
+				(value === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		}}
+	>
+		{#each themeOptions as option}
+			<option value={option}>{option}</option>
+		{/each}
+	</select>
 </footer>
