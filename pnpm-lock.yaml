@@ -7,7 +7,7 @@ specifiers:
   '@sentry/tracing': 7.17.2
   '@supabase/supabase-js': 2.0.4
   '@sveltejs/adapter-vercel': 1.0.0-next.80
-  '@sveltejs/kit': 1.0.0-next.526
+  '@sveltejs/kit': 1.0.0-next.528
   '@tailwindcss/forms': 0.5.3
   '@typescript-eslint/eslint-plugin': 5.41.0
   '@typescript-eslint/parser': 5.41.0
@@ -39,7 +39,7 @@ devDependencies:
   '@sentry/tracing': 7.17.2
   '@supabase/supabase-js': 2.0.4
   '@sveltejs/adapter-vercel': 1.0.0-next.80
-  '@sveltejs/kit': 1.0.0-next.526_svelte@3.52.0+vite@3.1.3
+  '@sveltejs/kit': 1.0.0-next.528_svelte@3.52.0+vite@3.1.3
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.1
   '@typescript-eslint/eslint-plugin': 5.41.0_c2ech32eqw2wft2tw62eghiuay
   '@typescript-eslint/parser': 5.41.0_k3rzghlbvxbkeygxp7hcorhnku
@@ -333,8 +333,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.526_svelte@3.52.0+vite@3.1.3:
-    resolution: {integrity: sha512-srirMIoQaVtQzfXl2R+AH+v925oiQ0XHbK8DXBSMdH3OPU0WlKkPucg5b7163BSFMxSalscj+zyr1EAPg2WdhQ==}
+  /@sveltejs/kit/1.0.0-next.528_svelte@3.52.0+vite@3.1.3:
+    resolution: {integrity: sha512-zUtXzWU4+EgT9cw5s7laPM6jgLQatGui+pCxUyQzEpMwDAOeNWduYl4bEFCRyfQTSNzQK+nnpkR+e5X+TO8BHA==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -347,7 +347,7 @@ packages:
       cookie: 0.5.0
       devalue: 4.0.0
       kleur: 4.1.5
-      magic-string: 0.26.3
+      magic-string: 0.26.7
       mime: 3.0.0
       sade: 1.8.1
       set-cookie-parser: 2.5.1
