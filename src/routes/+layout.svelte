@@ -15,6 +15,7 @@
 	import { supabase } from '$lib/supabaseClient';
 	import type { LayoutData } from './$types';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
 	/** @type{import('./$types').LayoutData} */
 	export let data: LayoutData;
@@ -40,7 +41,14 @@
 			release
 		});
 	}
+
+	/** Page Meta Details */
 </script>
+
+<svelte:head>
+	<title>{$page.data.title || 'Ear Trainer'}</title>
+	<meta name="description" content={$page.data.title || 'Ear Training Application'} />
+</svelte:head>
 
 {#if $navigating}
 	<PageNavigationIndicator />

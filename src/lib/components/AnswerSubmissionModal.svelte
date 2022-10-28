@@ -16,6 +16,7 @@
 	import { user } from '$lib/sessionStore';
 	import type { PostgrestError } from '@supabase/supabase-js';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	async function submitQuestionScore(
 		answers: Answer[]
@@ -85,20 +86,27 @@ SELECT submit_question('d5163409-b6b4-465f-bf96-2765c42f45c3'::uuid, true, ARRAY
 		return 'success';
 	}
 
-	export let open: boolean;
-	$: if (open) dialog.showModal();
-
-	export let answers: Answer[];
-
 	let dialog: HTMLDialogElement;
 
-	onMount(() => {
-		// dialog.showModal();
-	});
+	export let open: boolean;
+	$: {
+		if (dialog) {
+			if (open) dialog.showModal();
+			else dialog.close();
+		}
+	}
+
+	export let answers: Answer[];
 </script>
 
-<dialog {open} on:close on:close={() => (open = false)} on:submit bind:this={dialog}>
-	<p>Greetings, one and all!</p>
+<dialog
+	on:close
+	on:close={() => (open = false)}
+	on:submit
+	bind:this={dialog}
+	class="rounded-md border p-4 shadow-md"
+>
+	<p>Would you like to upload your results?</p>
 	<form method="dialog">
 		<button on:click={() => submitQuestionScore(answers)}>OK</button>
 		<button>Don't Submit Result</button>
