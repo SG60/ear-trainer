@@ -43,10 +43,11 @@
 <ul class="divide-y">
 	{#each supabaseData as supabaseDataItem}
 		{#await supabaseDataItem}
-			<li class="w-full grid justify-center">
-				<LoadingRing />
-				Loading...
-			</li>
+			{#each Array(10) as _}
+				<li class="skeleton min-h-[3rem] my-1 grid justify-items-center place-items-center">
+					<LoadingRing --size="1rem" />
+				</li>
+			{/each}
 		{:then { data: supaData, error }}
 			{#if error}
 				<li>Error :(</li>

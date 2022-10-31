@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  SUPABASE_CLI_VERSION: '1.6.0'
+  SUPABASE_CLI_VERSION: '1.11.3'
 
 # Automatically cancel in-progress actions on the same branch
 concurrency:

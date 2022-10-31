@@ -55,7 +55,8 @@
 			answers.push({
 				correct: true,
 				interval: submittedInterval,
-				question_type
+				question_type,
+				num_tries: 1
 			});
 			lastAnswerCorrect = true;
 
@@ -66,7 +67,8 @@
 			answers.push({
 				correct: false,
 				interval: submittedInterval,
-				question_type
+				question_type,
+				num_tries: 1
 			});
 			lastAnswerCorrect = false;
 			numberOfTries++;
@@ -94,7 +96,7 @@
 </script>
 
 <svelte:head>
-	<title>Ear Trainer</title>
+	<!-- <title>Ear Trainer</title> -->
 	<meta name="description" content="Ear Training Application" />
 </svelte:head>
 
