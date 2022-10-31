@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-import type { Database } from '$lib/database.types';
+import type { Database } from '$lib/generated/database.types';
 
 const supabaseUrl = 'https://weajrtbsntmezicrvolh.supabase.co';
 const supabaseAnonKey =
@@ -18,6 +18,7 @@ interface IndividualAnswer {
 	};
 	correct: boolean;
 	question_type: QuestionType;
+	num_tries: number;
 }
 type SubmitQuestionAnswerData = IndividualAnswer[];
 export enum QuestionType {
