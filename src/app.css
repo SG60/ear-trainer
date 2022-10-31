@@ -11,20 +11,32 @@
 		min-height: 100vh;
 	}
 
-	select {
-		border-radius: theme('borderRadius.full');
+	:where([type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select) {
+		border-radius: theme('borderRadius.md');
+		border-color: transparent;
+		transition: outline-width 145ms ease-in-out, background-color 245ms ease-out;
 		outline-width: 0rem;
 		outline-style: solid;
-		outline-color: theme('colors.slate.200' / 20);
-		cursor: pointer;
-		&:hover {
-			outline-width: 0.5rem;
-		}
-		transition: outline-width 145ms ease-in-out;
+		outline-color: theme('colors.blue.300' / 50%);
+		background-color: theme('colors.slate.200');
+		box-shadow: theme('boxShadow.sm');
 		.dark & {
-			color: theme('colors.slate.100');
 			background-color: theme('colors.slate.800');
-			outline-color: theme('colors.slate.600' / 20);
+			outline-color: theme('colors.blue.700' / 50%);
+
+			&:focus {
+				background-color: theme('colors.slate.900');
+			}
+		}
+		&:focus {
+			background-color: theme('colors.slate.100');
+		}
+	}
+
+	:where([type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea) {
+		&:focus {
+			outline-width: 0.3rem;
+			outline-offset: 0px;
 		}
 	}
 }

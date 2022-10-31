@@ -99,7 +99,7 @@
 		{/if}
 	</p>
 	<select
-		class="mt-4"
+		class="mt-4 cursor-pointer rounded-full hover:outline-[0.5rem] dark:bg-slate-900 dark:outline-slate-700"
 		value={themeModeSelected ?? 'auto'}
 		on:change={({ currentTarget: { value } }) => {
 			value === 'auto' ? localStorage.removeItem('theme') : (localStorage.theme = value);
