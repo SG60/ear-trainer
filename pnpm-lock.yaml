@@ -3,8 +3,8 @@ lockfileVersion: 5.4
 specifiers:
   '@playwright/test': 1.26.0
   '@samsveltecomponents/core': 1.2.0
-  '@sentry/svelte': 7.17.2
-  '@sentry/tracing': 7.17.2
+  '@sentry/svelte': 7.17.3
+  '@sentry/tracing': 7.17.3
   '@supabase/supabase-js': 2.0.4
   '@sveltejs/adapter-vercel': 1.0.0-next.81
   '@sveltejs/kit': 1.0.0-next.531
@@ -35,8 +35,8 @@ specifiers:
 devDependencies:
   '@playwright/test': 1.26.0
   '@samsveltecomponents/core': 1.2.0_svelte@3.52.0
-  '@sentry/svelte': 7.17.2_svelte@3.52.0
-  '@sentry/tracing': 7.17.2
+  '@sentry/svelte': 7.17.3_svelte@3.52.0
+  '@sentry/tracing': 7.17.3
   '@supabase/supabase-js': 2.0.4
   '@sveltejs/adapter-vercel': 1.0.0-next.81
   '@sveltejs/kit': 1.0.0-next.531_svelte@3.52.0+vite@3.1.3
@@ -213,13 +213,13 @@ packages:
       svelte: 3.52.0
     dev: true
 
-  /@sentry/browser/7.17.2:
-    resolution: {integrity: sha512-LICJvwnES+Jp7ShN7zkmTFYIQB9jWOg/s9U58CQWfwrkMTwE4zKylojF3OTtyNaMmekVv/y/1JjeS5KAK3IrHQ==}
+  /@sentry/browser/7.17.3:
+    resolution: {integrity: sha512-Oi7ZNMzCbUXaWwkFcwXIWhfNiTy8s0EukoaKzwSdIhU5pLH9HFizXMl/qrBdxC6keTtckTwS9c+w2xDnqln1fg==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/core': 7.17.2
-      '@sentry/types': 7.17.2
-      '@sentry/utils': 7.17.2
+      '@sentry/core': 7.17.3
+      '@sentry/types': 7.17.3
+      '@sentry/utils': 7.17.3
       tslib: 1.14.1
     dev: true
 
@@ -240,49 +240,49 @@ packages:
       - supports-color
     dev: true
 
-  /@sentry/core/7.17.2:
-    resolution: {integrity: sha512-mBFjngWJPN3V1A/tz/qa1jkQvmZtU07hhlWg+kmajD0nFulPHUWEvZhsi8NFveGcxMxc/wmaSSLcEOpKq5L29g==}
+  /@sentry/core/7.17.3:
+    resolution: {integrity: sha512-PSboa9aOVnvZU+C6/shKlHUA7zjAl6z5BKRHF8mEljEYql6bh0HfJJKXtBHMz1sWnmzMa/qABSKLpnP5ZQlJNw==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/types': 7.17.2
-      '@sentry/utils': 7.17.2
+      '@sentry/types': 7.17.3
+      '@sentry/utils': 7.17.3
       tslib: 1.14.1
     dev: true
 
-  /@sentry/svelte/7.17.2_svelte@3.52.0:
-    resolution: {integrity: sha512-7FDz+rZfKRN21NPwW5SLVa29dGJnPYSSn+xDjN3uZ7i/qfbSGK9An37uK3RDlSXqWD+/yhc8L8nEUczfvmsVNg==}
+  /@sentry/svelte/7.17.3_svelte@3.52.0:
+    resolution: {integrity: sha512-etzctV7EJV+9LKG8xvIDaXyVBCyz4IKTtYwEw/mGqrYK8bIzvDN9tWNElELgFi3UCO6NlGz6wK7Qa+0Gdp7wxw==}
     engines: {node: '>=8'}
     peerDependencies:
       svelte: 3.x
     dependencies:
-      '@sentry/browser': 7.17.2
-      '@sentry/types': 7.17.2
-      '@sentry/utils': 7.17.2
-      magic-string: 0.26.3
+      '@sentry/browser': 7.17.3
+      '@sentry/types': 7.17.3
+      '@sentry/utils': 7.17.3
+      magic-string: 0.26.7
       svelte: 3.52.0
       tslib: 1.14.1
     dev: true
 
-  /@sentry/tracing/7.17.2:
-    resolution: {integrity: sha512-j9I/g6SMkQjMPrBdzYQJSDk0qc30LJ9wZl6uKXes7dpfASq+IPcRdkPyRc5ZZX6HD/iUAlaCrBKNmYsK4+I5aw==}
+  /@sentry/tracing/7.17.3:
+    resolution: {integrity: sha512-ZBYq1AuE2dadxbuY7j3xpf9BNP/Uu7rjuvLoCmQeFrjJ4W80jqIfdUYmWCN6EaVhhAgh7J+1RQL+c79ONkPFQQ==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/core': 7.17.2
-      '@sentry/types': 7.17.2
-      '@sentry/utils': 7.17.2
+      '@sentry/core': 7.17.3
+      '@sentry/types': 7.17.3
+      '@sentry/utils': 7.17.3
       tslib: 1.14.1
     dev: true
 
-  /@sentry/types/7.17.2:
-    resolution: {integrity: sha512-zxhNQ8Xt/hfP8bFZEV66ovJZK7aUqok5w1wjsHgkUz/S6/gkiMrDYT3OtRCRuY3mfQu9KmeBniM0xZkaxREJ1w==}
+  /@sentry/types/7.17.3:
+    resolution: {integrity: sha512-+buEJo/4TKErjwF8Tq3XXKFZx4Utpvqs52e7i7Sur2qfyBNwRgBILceQvdnzw86JNZT2myeYmrfVbsaxAk7ilA==}
     engines: {node: '>=8'}
     dev: true
 
-  /@sentry/utils/7.17.2:
-    resolution: {integrity: sha512-l8t6qzyi+UUzD0a/oOYn4i+Eii+Ei29/TVwj/+9ogfJzBk6dSwSLvXievsyCRpcN3tftpWP0cHREcbZN64ZOWw==}
+  /@sentry/utils/7.17.3:
+    resolution: {integrity: sha512-Sd7BwVn6IClvaXbZaj/LnEcrMm8yjQtZkTVSrM2Vlv1lLeaH61JxSAFU6QntF+f/cCfZ7wSdNhWOfW3qZJ7t3Q==}
     engines: {node: '>=8'}
     dependencies:
-      '@sentry/types': 7.17.2
+      '@sentry/types': 7.17.3
       tslib: 1.14.1
     dev: true
 
@@ -1945,13 +1945,6 @@ packages:
 
   /magic-string/0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
-    dependencies:
-      sourcemap-codec: 1.4.8
-    dev: true
-
-  /magic-string/0.26.3:
-    resolution: {integrity: sha512-u1Po0NDyFcwdg2nzHT88wSK0+Rih0N1M+Ph1Sp08k8yvFFU3KR72wryS7e1qMPJypt99WB7fIFVCA92mQrMjrg==}
-    engines: {node: '>=12'}
     dependencies:
       sourcemap-codec: 1.4.8
     dev: true
