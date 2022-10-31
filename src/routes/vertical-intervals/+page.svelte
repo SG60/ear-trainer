@@ -55,7 +55,8 @@
 			answers.push({
 				correct: true,
 				interval: submittedInterval,
-				question_type
+				question_type,
+				num_tries: 1
 			});
 			lastAnswerCorrect = true;
 
@@ -66,7 +67,8 @@
 			answers.push({
 				correct: false,
 				interval: submittedInterval,
-				question_type
+				question_type,
+				num_tries: 1
 			});
 			lastAnswerCorrect = false;
 			numberOfTries++;

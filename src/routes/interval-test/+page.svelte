@@ -115,7 +115,8 @@ SELECT submit_question('d5163409-b6b4-465f-bf96-2765c42f45c3'::uuid, true, ARRAY
 			return {
 				question_data: { interval: answer.interval },
 				correct: answer.correct,
-				question_type: 1
+				question_type: 1,
+				num_tries: 1
 			};
 		});
 
