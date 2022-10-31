@@ -15,8 +15,6 @@
 	import { supabase, type DBWithCustomTypes } from '$lib/supabaseClient';
 	import { user } from '$lib/sessionStore';
 	import type { PostgrestError } from '@supabase/supabase-js';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 
 	async function submitQuestionScore(
 		answers: Answer[]
