@@ -11,8 +11,21 @@
 		min-height: 100vh;
 	}
 
-	.dark select {
-		color: black;
+	select {
+		border-radius: theme('borderRadius.full');
+		outline-width: 0rem;
+		outline-style: solid;
+		outline-color: theme('colors.slate.200' / 20);
+		cursor: pointer;
+		&:hover {
+			outline-width: 0.5rem;
+		}
+		transition: outline-width 145ms ease-in-out;
+		.dark & {
+			color: theme('colors.slate.100');
+			background-color: theme('colors.slate.800');
+			outline-color: theme('colors.slate.600' / 20);
+		}
 	}
 }
 

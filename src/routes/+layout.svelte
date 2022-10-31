@@ -88,7 +88,7 @@
 <slot />
 
 <div class="grow" />
-<footer class="mt-20 bg-slate-50 py-8 dark:bg-slate-800">
+<footer class="mt-20 flex flex-col items-center bg-slate-50 py-8 dark:bg-slate-800">
 	<p class="text-center">
 		{#if !browser}
 			loading login info...
@@ -99,6 +99,7 @@
 		{/if}
 	</p>
 	<select
+		class="mt-4"
 		value={themeModeSelected ?? 'auto'}
 		on:change={({ currentTarget: { value } }) => {
 			value === 'auto' ? localStorage.removeItem('theme') : (localStorage.theme = value);
