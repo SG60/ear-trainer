@@ -13,7 +13,7 @@
 		"format": "prettier --write --plugin-search-dir=. .",
 		"supa-start": "supabase start",
 		"supa-stop": "supabase stop",
-		"supa-types": "supabase gen types typescript --local > src/lib/database.types.ts"
+		"supa-types": "supabase gen types typescript --local > src/lib/generated/database.types.ts"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.26.0",
