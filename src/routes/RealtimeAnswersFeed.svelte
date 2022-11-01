@@ -21,7 +21,9 @@
 			.range(currentLength, currentLength + (amount - 1));
 	}
 
-	async function numberOfItemsInArray(supabaseData: any[]): Promise<number> {
+	async function numberOfItemsInArray(
+		supabaseData: Array<ReturnType<typeof loadMore>>
+	): Promise<number> {
 		return supabaseData.reduce(async (acc, cur) => {
 			return (await acc) + ((await cur).data?.length ?? 0);
 		}, Promise.resolve(0));
