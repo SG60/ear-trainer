@@ -22,7 +22,9 @@ const config = {
 		alias: {
 			$components: 'src/lib/components'
 		},
-		serviceWorker: { register: false }
+		serviceWorker: { register: false },
+
+		prerender: { entries: ['*', '/fallback', '/fallback/fallback', '/fallback/fallback/fallback'] }
 	}
 };
 
