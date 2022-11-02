@@ -77,6 +77,14 @@ worker.addEventListener('fetch', (event) => {
 			} catch (e) {
 				const response = await cache.match(event.request);
 				if (response) return response;
+				else if (!url.pathname.endsWith('.json')) {
+					let count = 0;
+					for (const i of url.pathname) {
+						if (i === '/') count++;
+					}
+					console.log('/fallback'.repeat(count));
+					return await cache.match('/fallback'.repeat(count));
+				}
 
 				throw e;
 			}
