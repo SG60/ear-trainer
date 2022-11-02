@@ -6,3 +6,5 @@ export const load: LayoutServerLoad = async () => {
 		pages: getAllPageHrefs()
 	};
 };
+
+export const prerender = true;

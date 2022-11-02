@@ -45,7 +45,6 @@
 
 	let themeModeSelected: 'dark' | 'light' | null;
 	const themeOptions = ['auto', 'light', 'dark'];
-	$: console.log(themeModeSelected);
 
 	onMount(() => (themeModeSelected = localStorage.theme));
 </script>

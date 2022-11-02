@@ -18,11 +18,38 @@ const config = {
 	},
 
 	kit: {
-		adapter: adapter({ edge: true }),
+		adapter: createAdapter(),
 		alias: {
 			$components: 'src/lib/components'
-		}
+		},
+		serviceWorker: { register: false }
 	}
 };
 
 export default withSentryConfig(config);
+
+/** @type {() => import('@sveltejs/kit').Adapter} */
+function createAdapter() {
+	const vercelAdapter = adapter({ edge: true });
+
+	return {
+		name: vercelAdapter.name,
+		adapt: function (builder) {
+			vercelAdapter.adapt(builder);
+			//
+			// builder.writePrerendered(`.vercel/output/static${builder.config.kit.paths.base}`, {
+			// 	fallback: 'spa-fallback4.html'
+			// });
+
+			// Copy the fallback.html file (used by offline mode)
+			// builder.copy(
+			// 	`${config.kit.outDir || '.svelte-kit'}/output/prerendered/fallback.html`,
+			// 	'.vercel/output/static/fallback.html'
+			// );
+			// builder.copy(
+			// 	`${config.kit.outDir || '.svelte-kit'}/output/prerendered/fallback.html`,
+			// 	'.vercel/output/static/fallback.html'
+			// );
+		}
+	};
+}

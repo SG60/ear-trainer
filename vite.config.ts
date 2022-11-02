@@ -29,7 +29,9 @@ export default defineConfig(({ mode }) => {
 					ignoreMissing: true
 				},
 
-				silent: true
+				silent: true,
+
+				disabled: env.PUBLIC_SENTRY_ENVIRONMENT === 'development'
 			})
 		],
 
