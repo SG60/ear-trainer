@@ -7,7 +7,7 @@ specifiers:
   '@sentry/tracing': 7.17.3
   '@supabase/supabase-js': 2.0.5
   '@sveltejs/adapter-vercel': 1.0.0-next.81
-  '@sveltejs/kit': 1.0.0-next.531
+  '@sveltejs/kit': 1.0.0-next.532
   '@tailwindcss/forms': 0.5.3
   '@typescript-eslint/eslint-plugin': 5.42.0
   '@typescript-eslint/parser': 5.42.0
@@ -39,7 +39,7 @@ devDependencies:
   '@sentry/tracing': 7.17.3
   '@supabase/supabase-js': 2.0.5
   '@sveltejs/adapter-vercel': 1.0.0-next.81
-  '@sveltejs/kit': 1.0.0-next.531_svelte@3.52.0+vite@3.1.3
+  '@sveltejs/kit': 1.0.0-next.532_svelte@3.52.0+vite@3.1.3
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.1
   '@typescript-eslint/eslint-plugin': 5.42.0_vglwczb2jn726lz2ydqf5n7mju
   '@typescript-eslint/parser': 5.42.0_k3rzghlbvxbkeygxp7hcorhnku
@@ -351,8 +351,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.531_svelte@3.52.0+vite@3.1.3:
-    resolution: {integrity: sha512-8uBJF5BweIFoyw+Kqv0jsDSfndNw2mTF222qi8rDuptOy7gjoWXYFy2F0kd8orNeZUnjFrHE+g/qDNHq7zzEJg==}
+  /@sveltejs/kit/1.0.0-next.532_svelte@3.52.0+vite@3.1.3:
+    resolution: {integrity: sha512-g+t+dncoz/DBc1mfwSfBaIBqE5pl0caMUy7yZzjsnyw0WG3AevC04d2KfTOgtOMgXVDnSVqZxlTR+MM5tnKeyw==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -363,7 +363,7 @@ packages:
       '@sveltejs/vite-plugin-svelte': 1.1.0_svelte@3.52.0+vite@3.1.3
       '@types/cookie': 0.5.1
       cookie: 0.5.0
-      devalue: 4.0.1
+      devalue: 4.2.0
       kleur: 4.1.5
       magic-string: 0.26.7
       mime: 3.0.0
@@ -945,8 +945,8 @@ packages:
       minimist: 1.2.6
     dev: true
 
-  /devalue/4.0.1:
-    resolution: {integrity: sha512-Oksbel8g2rv5ivcCyImF1RXEU2FcS1OtCwVs4tJCCeVws/Dp9EE15fUbEsNr/xLD3ZxsQURBCDf56Lk1CgwCpg==}
+  /devalue/4.2.0:
+    resolution: {integrity: sha512-mbjoAaCL2qogBKgeFxFPOXAUsZchircF+B/79LD4sHH0+NHfYm8gZpQrskKDn5gENGt35+5OI1GUF7hLVnkPDw==}
     dev: true
 
   /didyoumean/1.2.2:
