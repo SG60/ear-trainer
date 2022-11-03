@@ -25,6 +25,14 @@ const config = {
 		serviceWorker: { register: false },
 
 		prerender: { entries: ['*', '/fallback', '/fallback/fallback', '/fallback/fallback/fallback'] }
+	},
+
+	vitePlugin: {
+		experimental: {
+			inspector: {
+				showToggleButton: 'always'
+			}
+		}
 	}
 };
 
