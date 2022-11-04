@@ -18,8 +18,8 @@
 	"devDependencies": {
 		"@playwright/test": "1.26.0",
 		"@samsveltecomponents/core": "1.2.0",
-		"@sentry/svelte": "7.17.3",
-		"@sentry/tracing": "7.17.3",
+		"@sentry/svelte": "7.17.4",
+		"@sentry/tracing": "7.17.4",
 		"@supabase/supabase-js": "2.0.5",
 		"@sveltejs/adapter-vercel": "1.0.0-next.81",
 		"@sveltejs/kit": "1.0.0-next.532",
