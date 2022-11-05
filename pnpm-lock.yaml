@@ -22,7 +22,7 @@ specifiers:
   prettier-plugin-tailwindcss: 0.1.13
   rimraf: 3.0.2
   svelte: 3.52.0
-  svelte-check: 2.9.1
+  svelte-check: 2.9.2
   svelte-preprocess: 4.10.7
   tailwindcss: 3.2.2
   tone: 14.7.77
@@ -54,7 +54,7 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
   rimraf: 3.0.2
   svelte: 3.52.0
-  svelte-check: 2.9.1_xyvwwpusdp7eiuesisaivc7wmm
+  svelte-check: 2.9.2_xyvwwpusdp7eiuesisaivc7wmm
   svelte-preprocess: 4.10.7_pknnff77ga7lug4qi5a3mcxo5u
   tailwindcss: 3.2.2_postcss@8.4.18
   tone: 14.7.77
@@ -1596,17 +1596,6 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: true
 
-  /fast-glob/3.2.11:
-    resolution: {integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==}
-    engines: {node: '>=8.6.0'}
-    dependencies:
-      '@nodelib/fs.stat': 2.0.5
-      '@nodelib/fs.walk': 1.2.8
-      glob-parent: 5.1.2
-      merge2: 1.4.1
-      micromatch: 4.0.5
-    dev: true
-
   /fast-glob/3.2.12:
     resolution: {integrity: sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==}
     engines: {node: '>=8.6.0'}
@@ -2598,15 +2587,15 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svelte-check/2.9.1_xyvwwpusdp7eiuesisaivc7wmm:
-    resolution: {integrity: sha512-+BFPsj6irZ+t2pVSVo//2Ic1mI3A52xCwbkSTVhTqYZqgawcyZd9pYZoEac3fIWbEeTyCb5X82ORKI/gjn+P7A==}
+  /svelte-check/2.9.2_xyvwwpusdp7eiuesisaivc7wmm:
+    resolution: {integrity: sha512-DRi8HhnCiqiGR2YF9ervPGvtoYrheE09cXieCTEqeTPOTJzfoa54Py8rovIBv4bH4n5HgZYIyTQ3DDLHQLl2uQ==}
     hasBin: true
     peerDependencies:
       svelte: ^3.24.0
     dependencies:
       '@jridgewell/trace-mapping': 0.3.14
       chokidar: 3.5.3
-      fast-glob: 3.2.11
+      fast-glob: 3.2.12
       import-fresh: 3.3.0
       picocolors: 1.0.0
       sade: 1.8.1
