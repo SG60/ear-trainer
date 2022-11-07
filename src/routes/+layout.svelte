@@ -14,7 +14,7 @@
 	import { user } from '$lib/sessionStore';
 	import { supabase } from '$lib/supabaseClient';
 	import type { LayoutData } from './$types';
-	import { browser } from '$app/environment';
+	import { browser, dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 
@@ -28,7 +28,7 @@
 		}
 	});
 
-	if (browser) {
+	if (browser && !dev) {
 		Sentry.init({
 			dsn: 'https://3ea9767fb4b945a98effa7c4b49d2ee3@o1154464.ingest.sentry.io/6661120',
 			integrations: [new BrowserTracing()],
