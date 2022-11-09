@@ -16,7 +16,7 @@
 		"supa-types": "supabase gen types typescript --local > src/lib/generated/database.types.ts"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.26.0",
+		"@playwright/test": "1.27.1",
 		"@samsveltecomponents/core": "1.2.0",
 		"@sentry/svelte": "7.17.4",
 		"@sentry/tracing": "7.17.4",
