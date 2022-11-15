@@ -36,7 +36,7 @@
 				new BrowserTracing(),
 				new Replay({
 					// Capture 10% of all sessions
-					sessionSampleRate: 0.1,
+					sessionSampleRate: 1.0,
 					// Of the remaining 90% of sessions, if an error happens start capturing
 					errorSampleRate: 1.0
 				})
