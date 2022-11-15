@@ -3,6 +3,7 @@
 
 	import * as Sentry from '@sentry/svelte';
 	import { BrowserTracing } from '@sentry/tracing';
+	import { Replay } from '@sentry/replay';
 	import { PUBLIC_SENTRY_ENVIRONMENT } from '$env/static/public';
 
 	import { release } from 'virtual:sentry-upload';
@@ -31,7 +32,15 @@
 	if (browser && !dev) {
 		Sentry.init({
 			dsn: 'https://3ea9767fb4b945a98effa7c4b49d2ee3@o1154464.ingest.sentry.io/6661120',
-			integrations: [new BrowserTracing()],
+			integrations: [
+				new BrowserTracing(),
+				new Replay({
+					// Capture 10% of all sessions
+					sessionSampleRate: 0.1,
+					// Of the remaining 90% of sessions, if an error happens start capturing
+					errorSampleRate: 1.0
+				})
+			],
 			environment: PUBLIC_SENTRY_ENVIRONMENT,
 
 			// Set tracesSampleRate to 1.0 to capture 100%
