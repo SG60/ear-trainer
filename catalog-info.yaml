@@ -8,6 +8,9 @@ spec:
   type: other
   lifecycle: unknown
   owner: main
+  system: ear-trainer
+  dependOn:
+    - resource: ear-trainer-supabase-db
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Resource
@@ -18,3 +21,9 @@ spec:
   owner: main
   system: ear-trainer
 ---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: ear-trainer
+spec:
+  owner: main
