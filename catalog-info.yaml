@@ -9,7 +9,7 @@ spec:
   lifecycle: unknown
   owner: main
   system: ear-trainer
-  dependOn:
+  dependsOn:
     - resource: ear-trainer-supabase-db
 ---
 apiVersion: backstage.io/v1alpha1
