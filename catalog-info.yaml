@@ -5,7 +5,7 @@ metadata:
   annotations:
     github.com/project-slug: SG60/ear-trainer
 spec:
-  type: other
+  type: website
   lifecycle: unknown
   owner: main
   system: ear-trainer
